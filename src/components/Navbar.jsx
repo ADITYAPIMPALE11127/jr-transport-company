@@ -13,16 +13,19 @@ const Navbar = () => {
   }, [])
 
   const scrollToSection = (id) => {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' })
+    const section = document.getElementById(id)
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' })
+    }
     setMenuOpen(false)
   }
 
   const navItems = [
-    { label: 'Home', id: 'hero' },
+    { label: 'Home', id: 'hero-section' },      // updated for HeroEnquirySplit.jsx
     { label: 'About', id: 'about' },
     { label: 'Services', id: 'services' },
     { label: 'Clients', id: 'clients' },
-    { label: 'Contact', id: 'enquiry' },
+    { label: 'Contact', id: 'footer' },         // updated for footer navigation
   ]
 
   return (
@@ -34,14 +37,24 @@ const Navbar = () => {
           {/* Desktop Links */}
           <div className="nav-links">
             {navItems.map((item) => (
-              <a key={item.id} href={`#${item.id}`} onClick={(e) => { e.preventDefault(); scrollToSection(item.id); }}>
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                onClick={(e) => {
+                  e.preventDefault()
+                  scrollToSection(item.id)
+                }}
+              >
                 {item.label}
               </a>
             ))}
           </div>
 
           {/* Mobile Hamburger */}
-          <div className={`hamburger ${menuOpen ? 'active' : ''}`} onClick={() => setMenuOpen(!menuOpen)}>
+          <div
+            className={`hamburger ${menuOpen ? 'active' : ''}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
             <span></span>
             <span></span>
             <span></span>

@@ -1,6 +1,6 @@
 import React from 'react'
 import './About.css'
-import transportFleetImage from '../../public/assets/trasnport Fleet.png' // Adjust path based on your folder structure
+import fleetImage from "../../public/assets/transport-fleet.png";// Adjust path based on your folder structure
 
 const About = () => {
   const principles = [
@@ -30,11 +30,7 @@ const About = () => {
           </div>
 
           <div className="about-image-container">
-            <img 
-              src={transportFleetImage}
-              alt="JR Transport Fleet"
-              className="about-image"
-            />
+<img src={fleetImage} alt="JR Transport Fleet" />
           </div>
         </div>
 
