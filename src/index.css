@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
+html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
 :root {
   --primary: #003087;
   --primary-dark: #00205b;
@@ -17,10 +23,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
@@ -75,8 +77,14 @@ background: rgba(0, 32, 91, 0.98);
   align-items: center;
 }
 
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
 .logo {
-  font-size: clamp(1.3rem, 4vw, 1.75rem);
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
   font-weight: 800;
   letter-spacing: -0.5px;
   color: white !important;
@@ -172,10 +180,28 @@ background: rgba(0, 32, 91, 0.98);
 .mobile-menu a:nth-child(4) { transition-delay: 0.4s; }
 .mobile-menu a:nth-child(5) { transition-delay: 0.5s; }
 
+/* Navbar Logo */
+.navbar-logo {
+  height: 50px;
+  width: 80px;
+  border-radius: 50%;
+  border: 2px solid white;
+  object-fit: cover;
+}
+
 /* Desktop breakpoint */
 @media (min-width: 992px) {
   .hamburger, .mobile-menu { display: none; }
   .nav-links { display: flex; }
+}
+
+/* Mobile responsiveness for navbar logo */
+@media (max-width: 991px) {
+  .navbar-logo {
+    height: 35px;
+    width: 55px;
+    margin-left: -6px;
+  }
 }
 /* Scroll Down Indicator Animation */
 @keyframes scrollDown {

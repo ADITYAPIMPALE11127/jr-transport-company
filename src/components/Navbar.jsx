@@ -32,7 +32,10 @@ const Navbar = () => {
     <>
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="container nav-container">
-          <div className="logo">JR Transport Company</div>
+          <div className="logo-section">
+            <img src="/assets/company-logo.png" alt="Company Logo" className="navbar-logo" />
+            <div className="logo">JR Transport Company</div>
+          </div>
 
           {/* Desktop Links */}
           <div className="nav-links">
