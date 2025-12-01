@@ -35,26 +35,36 @@ const Solutions = () => {
   ]
 
   return (
-    <section id="solutions" style={{ padding: '120px 0', background: 'white' }}>
+    <section id="solutions" style={{
+      padding: 'clamp(60px, 10vw, 120px) 0',
+      background: 'white'
+    }}>
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 8vw, 80px)' }}>
           <h2 style={{
-            fontSize: 'clamp(2.8rem, 6vw, 4.5rem)',
+            fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
             fontWeight: 800,
             color: 'var(--primary-dark)',
-            marginBottom: '24px'
+            marginBottom: '24px',
+            padding: '0 15px'
           }}>
             Our Specialized Transport Solutions
           </h2>
-          <p style={{ fontSize: '1.3rem', color: 'var(--gray)', maxWidth: '900px', margin: '0 auto' }}>
+          <p style={{
+            fontSize: 'clamp(1.05rem, 2.5vw, 1.3rem)',
+            color: 'var(--gray)',
+            maxWidth: '900px',
+            margin: '0 auto',
+            padding: '0 20px'
+          }}>
             We handle the most challenging heavy cargo movements with precision, safety, and cutting-edge equipment
           </p>
         </div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(1, 1fr)',
-          gap: '40px',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+          gap: 'clamp(30px, 5vw, 40px)',
           marginTop: '40px'
         }}>
           {solutions.map((solution, index) => (
@@ -63,7 +73,7 @@ const Solutions = () => {
               style={{
                 background: 'white',
                 borderRadius: '24px',
-                padding: '50px 40px',
+                padding: 'clamp(35px, 6vw, 50px) clamp(25px, 5vw, 40px)',
                 textAlign: 'center',
                 boxShadow: '0 10px 40px rgba(0,0,0,0.08)',
                 transition: 'var(--transition)',
@@ -71,8 +81,10 @@ const Solutions = () => {
                 transform: 'translateY(0)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-20px) scale(1.03)'
-                e.currentTarget.style.boxShadow = '0 30px 80px rgba(0,48,135,0.25)'
+                if (window.innerWidth > 768) {
+                  e.currentTarget.style.transform = 'translateY(-20px) scale(1.03)'
+                  e.currentTarget.style.boxShadow = '0 30px 80px rgba(0,48,135,0.25)'
+                }
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0) scale(1)'
@@ -80,9 +92,9 @@ const Solutions = () => {
               }}
             >
               <div style={{
-                fontSize: '5rem',
-                marginBottom: '30px',
-                height: '120px',
+                fontSize: 'clamp(3.5rem, 8vw, 5rem)',
+                marginBottom: 'clamp(20px, 4vw, 30px)',
+                height: 'clamp(80px, 15vw, 120px)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'
@@ -91,28 +103,27 @@ const Solutions = () => {
               </div>
 
               <h3 style={{
-                fontSize: '1.8rem',
+                fontSize: 'clamp(1.4rem, 3vw, 1.8rem)',
                 fontWeight: 700,
                 color: 'var(--primary-dark)',
-                marginBottom: '20px'
+                marginBottom: 'clamp(15px, 3vw, 20px)'
               }}>
                 {solution.title}
               </h3>
 
               <p style={{
-                fontSize: '1.1rem',
+                fontSize: 'clamp(0.95rem, 2vw, 1.1rem)',
                 color: 'var(--gray)',
                 lineHeight: '1.7'
               }}>
                 {solution.desc}
               </p>
 
-              {/* Subtle gradient line */}
               <div style={{
                 width: '80px',
                 height: '4px',
                 background: 'linear-gradient(90deg, var(--primary), var(--secondary))',
-                margin: '30px auto 0',
+                margin: 'clamp(20px, 4vw, 30px) auto 0',
                 borderRadius: '2px'
               }} />
             </div>

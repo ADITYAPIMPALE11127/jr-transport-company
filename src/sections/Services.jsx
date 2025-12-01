@@ -35,26 +35,36 @@ const Services = () => {
   ]
 
   return (
-    <section id="services" style={{ padding: '120px 0', background: 'var(--light)' }}>
+    <section id="services" style={{
+      padding: 'clamp(60px, 10vw, 120px) 0',
+      background: 'var(--light)'
+    }}>
       <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'clamp(50px, 8vw, 80px)' }}>
           <h2 style={{
-          fontSize: 'clamp(2.8rem, 6vw, 4.5rem)',
-          fontWeight: 800,
-          color: 'var(--primary-dark)',
-          marginBottom: '24px'
-        }}>
-          Our Comprehensive Services
-        </h2>
-        <p style={{ fontSize: '1.3rem', color: 'var(--gray)', maxWidth: '900px', margin: '0 auto' }}>
-          End-to-end heavy transport solutions backed by experience, technology and a commitment to safety
-        </p>
+            fontSize: 'clamp(2.5rem, 6vw, 4.5rem)',
+            fontWeight: 800,
+            color: 'var(--primary-dark)',
+            marginBottom: '24px',
+            padding: '0 15px'
+          }}>
+            Our Comprehensive Services
+          </h2>
+          <p style={{
+            fontSize: 'clamp(1.05rem, 2.5vw, 1.3rem)',
+            color: 'var(--gray)',
+            maxWidth: '900px',
+            margin: '0 auto',
+            padding: '0 20px'
+          }}>
+            End-to-end heavy transport solutions backed by experience, technology and a commitment to safety
+          </p>
         </div>
 
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(1, 1fr)',
-          gap: '50px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 'clamp(35px, 6vw, 50px)',
         }}>
           {services.map((service, index) => (
             <div
@@ -65,14 +75,15 @@ const Services = () => {
                 overflow: 'hidden',
                 boxShadow: '0 15px 50px rgba(0,0,0,0.1)',
                 transition: 'var(--transition)',
-                display: 'flex',
-                flexDirection: 'column',
-                [index % 2 === 1 ? 'marginLeft' : 'marginRight']: 'auto',
                 maxWidth: '900px',
+                width: '100%',
+                margin: index % 2 === 1 ? '0 0 0 auto' : '0 auto 0 0'
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-15px)'
-                e.currentTarget.style.boxShadow = '0 35px 80px rgba(0,48,135,0.25)'
+                if (window.innerWidth > 768) {
+                  e.currentTarget.style.transform = 'translateY(-15px)'
+                  e.currentTarget.style.boxShadow = '0 35px 80px rgba(0,48,135,0.25)'
+                }
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)'
@@ -81,38 +92,43 @@ const Services = () => {
             >
               <div style={{
                 display: 'flex',
-                flexDirection: 'row',
+                flexDirection: window.innerWidth <= 768 ? 'column' : 'row',
                 alignItems: 'stretch',
-                minHeight: '320px',
+                minHeight: window.innerWidth > 768 ? '320px' : 'auto',
               }}>
-                {/* Icon Side */}
                 <div style={{
-                  background: `linear-gradient(135deg, var(--primary), var(--secondary))`,
-                  width: '180px',
+                  background: 'linear-gradient(135deg, var(--primary), var(--secondary))',
+                  width: window.innerWidth > 768 ? '180px' : '100%',
+                  height: window.innerWidth <= 768 ? '140px' : 'auto',
                   flexShrink: 0,
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  fontSize: '6rem',
+                  fontSize: 'clamp(4rem, 8vw, 6rem)',
                 }}>
                   {service.icon}
                 </div>
 
-                {/* Content Side */}
-                <div style={{ padding: '50px 50px', flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{
+                  padding: 'clamp(30px, 5vw, 50px)',
+                  flex: 1,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center'
+                }}>
                   <h3 style={{
-                    fontSize: '2rem',
+                    fontSize: 'clamp(1.5rem, 3vw, 2rem)',
                     fontWeight: 700,
                     color: 'var(--primary-dark)',
-                    marginBottom: '20px'
+                    marginBottom: 'clamp(15px, 3vw, 20px)'
                   }}>
                     {service.title}
                   </h3>
                   <p style={{
-                    fontSize: '1.15rem',
+                    fontSize: 'clamp(0.95rem, 2vw, 1.15rem)',
                     color: 'var(--gray)',
                     lineHeight: '1.7',
-                    marginBottom: '30px'
+                    marginBottom: 'clamp(20px, 4vw, 30px)'
                   }}>
                     {service.desc}
                   </p>
@@ -120,12 +136,12 @@ const Services = () => {
                   <ul style={{
                     listStyle: 'none',
                     display: 'grid',
-                    gridTemplateColumns: 'repeat(2, 1fr)',
+                    gridTemplateColumns: window.innerWidth > 600 ? 'repeat(2, 1fr)' : '1fr',
                     gap: '12px',
                   }}>
                     {service.features.map((feature, i) => (
                       <li key={i} style={{
-                        fontSize: '1rem',
+                        fontSize: 'clamp(0.9rem, 2vw, 1rem)',
                         color: 'var(--dark)',
                         position: 'relative',
                         paddingLeft: '28px',

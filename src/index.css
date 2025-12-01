@@ -44,17 +44,11 @@ a {
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 clamp(15px, 3vw, 20px);
 }
 
 section {
-  padding: 80px 0;
-}
-
-@media (min-width: 768px) {
-  section {
-    padding: 120px 0;
-  }
+  padding: clamp(60px, 10vw, 120px) 0;
 }
 /* ===== NAVBAR STYLES ===== */
 .navbar {
@@ -82,7 +76,7 @@ background: rgba(0, 32, 91, 0.98);
 }
 
 .logo {
-  font-size: 28px;
+  font-size: clamp(1.3rem, 4vw, 1.75rem);
   font-weight: 800;
   letter-spacing: -0.5px;
   color: white !important;
@@ -95,7 +89,8 @@ background: rgba(0, 32, 91, 0.98);
 .nav-links a {
  color: white !important;
   font-weight: 500;
-  margin-left: 40px;
+  margin-left: clamp(25px, 4vw, 40px);
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
   position: relative;
   transition: var(--transition);
 }
@@ -158,9 +153,9 @@ background: rgba(0, 32, 91, 0.98);
 
 .mobile-menu a {
  color: white !important;
-  font-size: 32px;
+  font-size: clamp(1.8rem, 5vw, 2rem);
   font-weight: 600;
-  margin: 15px 0;
+  margin: clamp(12px, 3vw, 15px) 0;
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.4s ease;
