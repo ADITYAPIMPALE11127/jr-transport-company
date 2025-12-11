@@ -38,14 +38,13 @@
   height: auto;
 }
 
-/* 🔥 Gradient Text: red → orange → white */
+/* 🔥 Gradient Text: red → white */
 .logo {
   font-size: 1.6rem;
   font-weight: 700;
   background: linear-gradient(
     to right,
     #ff0000,
-    #ff6a00,
     #ffffff
   );
   -webkit-background-clip: text;
@@ -61,7 +60,7 @@
 }
 
 .nav-links a {
-  color: #fff;
+  color: #ff0000;
   font-size: 1rem;
   font-weight: 500;
   text-decoration: none;
@@ -69,7 +68,7 @@
 }
 
 .nav-links a:hover {
-  color: #ff6a00;
+  color: #ffffff;
 }
 
 /* -------------------------------

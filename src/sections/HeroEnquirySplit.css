@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
 #hero-split {
   padding: 120px 0 80px;
@@ -8,7 +8,7 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: #000;
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Background slideshow styles */
@@ -19,35 +19,60 @@
   width: 100%;
   height: 100%;
   z-index: -1;
-  inset: 0;
 }
 
 .bg-slide {
-  position: absolute;
-  inset: 0;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
-  opacity: 0;
-  transition: opacity 1.8s ease-in-out;
-}
-
-.bg-slide.active {
-  opacity: 1;
-  animation: scaleIn 20s ease-in-out infinite;
-}
-
-/* Overlay removed for full image visibility */
-.bg-dark-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: transparent;
-  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  will-change: opacity;
+}
+
+/* Added shadow effect for background images */
+.bg-slide::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.15) 30%,
+    rgba(0, 0, 0, 0.1) 60%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
   pointer-events: none;
 }
+
+.bg-slide.active {
+  opacity: 1;
+}
+
+/* Updated gradient overlay for better text readability */
+.bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  z-index: -1;
+}
+
 .hero-container {
   display: flex;
   flex-direction: column;
@@ -60,58 +85,34 @@
 .hero-left {
   width: 100%;
   max-width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
 }
 
 .hero-left h1 {
-  font-size: clamp(2.8rem, 9vw, 5rem);
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
   font-weight: 800;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background: linear-gradient(135deg, #FF0000 0%, #FF4D4D 30%, #FF9999 60%, #FFFFFF 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  line-height: 1.1;
+  line-height: 1.2;
   margin-bottom: 25px;
-  letter-spacing: -0.5px;
+  /* Red-white gradient for heading title */
+  background: linear-gradient(135deg, #FF0000 0%, #FF4D4D 25%, #e25d5d 50%, #FFFFFF 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.hero-left .hero-subtitle {
-  font-size: clamp(1.3rem, 4vw, 1.8rem);
-  font-weight: 600;
-  color: #FF6B6B;
-  margin-bottom: 15px;
-  font-family: 'Inter', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 2px;
 }
 
 .hero-left p {
   font-size: clamp(1.1rem, 3vw, 1.4rem);
-  color: #FFFFFF;
+  color: white; /* Changed to white as requested */
   line-height: 1.8;
   max-width: 700px;
-  font-weight: 400;
-  font-family: 'Inter', sans-serif;
-  opacity: 0.95;
-  margin-bottom: 30px;
-}
-
-.hero-left .hero-highlight {
-  color: #FFD700;
   font-weight: 600;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-
-.hero-left .hero-cta {
-  font-size: clamp(1.2rem, 3vw, 1.5rem);
-  color: #FFFFFF;
-  font-weight: 500;
-  margin-top: 20px;
-  padding-left: 15px;
-  border-left: 4px solid #FF0000;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.5px;
 }
 
 .hero-right {
@@ -124,68 +125,40 @@
   flex-direction: column;
   gap: 20px;
   padding: 35px 30px;
-  background: rgba(20, 20, 20, 0.85);
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: 'Poppins', sans-serif;
 }
 
 .enquiry-form h2 {
   font-size: clamp(1.8rem, 4vw, 2.2rem);
   font-weight: 700;
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(135deg, #FF0000 0%, #FF6666 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #333;
   margin-bottom: 10px;
   text-align: center;
-  letter-spacing: -0.5px;
-}
-
-.enquiry-form .form-subtitle {
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 1rem;
-  opacity: 0.9;
-  margin-bottom: 25px;
-  font-family: 'Inter', sans-serif;
-}
-
-.enquiry-form label {
-  color: #FFFFFF;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  margin-bottom: 8px;
-  display: block;
-  font-size: 0.95rem;
 }
 
 .enquiry-form input,
 .enquiry-form textarea {
   padding: 16px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(224, 224, 224, 0.8);
   border-radius: 12px;
   font-size: 16px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   transition: all 0.3s ease;
   width: 100%;
-  background: rgba(255, 255, 255, 0.05);
-  color: #FFFFFF;
-}
-
-.enquiry-form input::placeholder,
-.enquiry-form textarea::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .enquiry-form input:focus,
 .enquiry-form textarea:focus {
   outline: none;
-  border-color: #FF0000;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.2);
+  border-color: #FF3333;
+  box-shadow: 0 0 0 3px rgba(255, 51, 51, 0.15);
+  background: white;
 }
 
 .enquiry-form textarea {
@@ -194,7 +167,7 @@
 }
 
 .enquiry-form button {
-  background: linear-gradient(135deg, #FF0000 0%, #FF3333 100%);
+  background: linear-gradient(135deg, #FF0000, #FF6666);
   color: white;
   padding: 18px;
   border: none;
@@ -206,31 +179,27 @@
   box-shadow: 0 8px 20px rgba(255, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
-  font-family: 'Inter', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .enquiry-form button:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 12px 30px rgba(255, 0, 0, 0.4);
-  background: linear-gradient(135deg, #FF3333 0%, #FF6666 100%);
+  background: linear-gradient(135deg, #FF3333, #FF8888);
 }
 
 .enquiry-form button:disabled {
-  opacity: 0.5;
+  opacity: 0.7;
   cursor: not-allowed;
-  transform: none;
 }
 
 .error {
-  color: #FF6B6B;
+  color: #FF3333;
   font-size: 13px;
   margin-top: -12px;
   margin-bottom: 0;
   display: block;
   font-weight: 500;
-  font-family: 'Inter', sans-serif;
 }
 
 /* Progress indicator for slideshow */
@@ -240,66 +209,23 @@
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  gap: 12px;
+  gap: 8px;
   z-index: 2;
 }
 
 .progress-dot {
-  width: 12px;
-  height: 12px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.5);
   transition: all 0.3s ease;
   cursor: pointer;
-  border: none;
-  padding: 0;
-  position: relative;
 }
 
 .progress-dot.active {
-  background: #FF0000;
-  transform: scale(1.3);
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
-}
-
-.progress-dot:hover {
-  background: rgba(255, 255, 255, 0.6);
-}
-
-.progress-dot.active:hover {
   background: #FF3333;
-}
-
-/* Animation for background zoom effect */
-@keyframes scaleIn {
-  0% {
-    transform: scale(1.1);
-  }
-  50% {
-    transform: scale(1.15);
-  }
-  100% {
-    transform: scale(1.1);
-  }
-}
-
-/* Loading animation for images */
-.bg-slide {
-  animation: fadeIn 1.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Ensure body uses Inter font */
-body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
 }
 
 @media (min-width: 768px) {
@@ -307,8 +233,13 @@ body {
     padding: 40px 35px;
   }
   
-  .hero-left h1 {
-    font-size: clamp(3rem, 8vw, 5.5rem);
+  .bg-overlay {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.5) 40%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
   }
 }
 
@@ -335,8 +266,20 @@ body {
     top: 120px;
   }
   
-  .bg-slide.active {
-    animation: scaleIn 20s ease-in-out infinite;
+  .bg-overlay {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.7) 0%,
+      rgba(0, 0, 0, 0.5) 30%,
+      rgba(0, 0, 0, 0.3) 100%
+    );
+  }
+  
+  .hero-left h1 {
+    background: linear-gradient(135deg, #FF0000 0%, #FF3333 25%, #FF6666 50%, #FFFFFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
 
@@ -364,15 +307,6 @@ body {
     padding: 16px;
     font-size: 1rem;
   }
-  
-  .bg-progress {
-    bottom: 20px;
-  }
-  
-  .progress-dot {
-    width: 10px;
-    height: 10px;
-  }
 }
 
 @media (max-width: 480px) {
@@ -382,7 +316,6 @@ body {
 
   .hero-left h1 {
     margin-bottom: 20px;
-    font-size: clamp(2.5rem, 7vw, 3.5rem);
   }
 
   .enquiry-form {
@@ -391,50 +324,48 @@ body {
   }
   
   .bg-slide {
-    background-position: center;
+    background-position: center 30%;
   }
   
-  .bg-progress {
-    gap: 8px;
+  .hero-left h1 {
+    background: linear-gradient(135deg, #FF3333 0%, #FF6666 50%, #FFFFFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }
 
-/* Ensure images are fully stretched */
-.bg-slide {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+/* Animation for smooth background transitions */
+@keyframes fadeInOut {
+  0%, 100% { opacity: 0; }
+  20%, 80% { opacity: 1; }
 }
 
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Form success message */
-.success-message {
-  color: #4CAF50;
-  background: rgba(76, 175, 80, 0.1);
-  padding: 12px;
-  border-radius: 8px;
-  text-align: center;
-  margin-top: 15px;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  border: 1px solid rgba(76, 175, 80, 0.3);
-}
-
-.bg-slide {
+/* Preload images to prevent flickering */
+.bg-slideshow::before {
+  content: '';
   position: absolute;
-  inset: 0; /* modern replacement for top/left/right/bottom: 0 */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0;
-  transition: opacity 1.8s ease-in-out;
-  will-change: opacity;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  background-image: 
+    url('/assets/hero-bg-1.jpg'),
+    url('/assets/hero-bg-2.jpg'),
+    url('/assets/hero-bg-3.jpg'),
+    url('/assets/hero-bg-4.jpg'),
+    url('/assets/hero-bg-5.jpg');
 }
 
-.bg-slide.active {
-  opacity: 1;
+/* Additional shadow effect for better text contrast on bright backgrounds */
+.hero-left::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.3) 0%, transparent 70%);
+  z-index: -1;
+  opacity: 0.5;
+  pointer-events: none;
 }

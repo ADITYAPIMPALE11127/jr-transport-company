@@ -50,10 +50,11 @@ const Footer = () => {
   return (
     <footer
       style={{
-        background: "var(--primary-dark)",
+        background: "black",
         color: "white",
         padding: "clamp(60px, 10vw, 100px) 0 0",
         marginTop: "clamp(30px, 6vw, 50px)",
+        fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
       }}
     >
       <div className="container">
@@ -68,21 +69,43 @@ const Footer = () => {
         >
           {/* ---------------- LEFT SECTION ---------------- */}
           <div>
-            <h3
+            <div
               style={{
-                fontSize: "clamp(1.5rem, 3vw, 1.8rem)",
-                fontWeight: 700,
+                display: "flex",
+                alignItems: "center",
+                gap: "15px",
                 marginBottom: "25px",
               }}
             >
-              JR Transport Company
-            </h3>
+              <img
+                src="/assets/company-logo.png"
+                alt="JR Transport Company Logo"
+                style={{
+                  height: "clamp(2rem, 4vw, 3rem)",
+                  width: "auto",
+                }}
+              />
+              <h3
+                style={{
+                  fontSize: "clamp(1.5rem, 3vw, 1.8rem)",
+                  fontWeight: 700,
+                  margin: 0,
+                  background: "linear-gradient(135deg, #FF0000 0%, #FFFFFF 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  textShadow: "0 2px 4px rgba(0, 0, 0, 0.5)",
+                }}
+              >
+                JR Transport Company
+              </h3>
+            </div>
             <p
               style={{
-                opacity: 0.9,
-                lineHeight: "1.8",
+                opacity: 1,
+                lineHeight: "2.0",
                 marginBottom: "20px",
-                fontSize: "clamp(0.95rem, 2vw, 1.05rem)",
+                fontSize: "clamp(1rem, 2vw, 1.1rem)",
               }}
             >
               India's trusted partner for heavy & over-dimensional cargo
@@ -94,16 +117,16 @@ const Footer = () => {
                 style={{
                   fontWeight: 600,
                   marginBottom: "10px",
-                  fontSize: "clamp(1rem, 2vw, 1.1rem)",
+                  fontSize: "clamp(1.05rem, 2vw, 1.15rem)",
                 }}
               >
                 Office Address
               </p>
               <p
                 style={{
-                  fontSize: "clamp(0.95rem, 2vw, 1.1rem)",
-                  opacity: 0.9,
-                  lineHeight: "1.7",
+                  fontSize: "clamp(1rem, 2vw, 1.1rem)",
+                  opacity: 1,
+                  lineHeight: "2.0",
                 }}
               >
                 A-113, A-Wing, Jai Ganesh Vision,
@@ -121,7 +144,7 @@ const Footer = () => {
                 href={`mailto:${email}`}
                 style={{
                   color: "#00a3e0",
-                  fontSize: "clamp(0.95rem, 2vw, 1.05rem)",
+                  fontSize: "clamp(1rem, 2vw, 1.1rem)",
                 }}
                 title="Send email to JR Transport"
               >
