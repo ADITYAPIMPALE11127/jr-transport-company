@@ -37,32 +37,16 @@
   animation: scaleIn 20s ease-in-out infinite;
 }
 
-/* Very light overlay to make background images clearly visible */
+/* Overlay removed for full image visibility */
 .bg-dark-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.25) 0%,
-    rgba(0, 0, 0, 0.20) 50%,
-    rgba(0, 0, 0, 0.30) 100%
-  );
+  background: transparent;
   z-index: 0;
   pointer-events: none;
-}
-/* Slightly darker on desktop for better text contrast */
-@media (min-width: 992px) {
-  .bg-dark-overlay {
-    background: linear-gradient(
-      135deg,
-      rgba(0, 0, 0, 0.30) 0%,
-      rgba(0, 0, 0, 0.25) 50%,
-      rgba(0, 0, 0, 0.35) 100%
-    );
-  }
 }
 .hero-container {
   display: flex;
