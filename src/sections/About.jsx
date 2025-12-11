@@ -3,14 +3,6 @@ import './About.css'
 import fleetImage from "../../public/assets/transport-fleet.png";// Adjust path based on your folder structure
 
 const About = () => {
-  const principles = [
-    { s: "Seiri (Sort)", desc: "Remove unnecessary items from workplace", color: "#e74c3c" },
-    { s: "Seiton (Set in Order)", desc: "Arrange tools & equipment efficiently", color: "#f39c12" },
-    { s: "Seiso (Shine)", desc: "Keep workplace clean and tidy daily", color: "#27ae60" },
-    { s: "Seiketsu (Standardize)", desc: "Maintain and monitor first three categories", color: "#2980b9" },
-    { s: "Shitsuke (Sustain)", desc: "Discipline to follow established procedures", color: "#8e44ad" }
-  ]
-
   const values = ["Safety First", "On-Time Delivery", "Customer Satisfaction", "Team Work", "Integrity", "Continuous Improvement"]
 
   return (
@@ -64,27 +56,7 @@ effective transportation services
           </div>
         </div>
 
-        {/* 5S Principles */}
-        <div className="about-principles">
-          <h2>We Follow Japanese 5S Methodology</h2>
 
-          <div className="about-principles-grid">
-            {principles.map((item, i) => (
-              <div 
-                key={i} 
-                className="principle-card"
-                style={{ borderTopColor: item.color }}
-              >
-                <h4 style={{ color: item.color }}>
-                  {item.s}
-                </h4>
-                <p>
-                  {item.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
 
       </div>
     </section>

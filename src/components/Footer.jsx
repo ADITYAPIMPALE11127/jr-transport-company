@@ -52,7 +52,7 @@ const Footer = () => {
       style={{
         background: "var(--primary-dark)",
         color: "white",
-        padding: "clamp(60px, 10vw, 100px) 0 clamp(30px, 5vw, 40px)",
+        padding: "clamp(60px, 10vw, 100px) 0 0",
         marginTop: "clamp(30px, 6vw, 50px)",
       }}
     >
@@ -60,25 +60,55 @@ const Footer = () => {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 250px), 1fr))",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(min(100%, 250px), 1fr))",
             gap: "clamp(35px, 6vw, 50px)",
             marginBottom: "clamp(50px, 8vw, 80px)",
           }}
         >
+          {/* ---------------- LEFT SECTION ---------------- */}
           <div>
-            <h3 style={{ fontSize: "clamp(1.5rem, 3vw, 1.8rem)", fontWeight: 700, marginBottom: "25px" }}>
+            <h3
+              style={{
+                fontSize: "clamp(1.5rem, 3vw, 1.8rem)",
+                fontWeight: 700,
+                marginBottom: "25px",
+              }}
+            >
               JR Transport Company
             </h3>
-            <p style={{ opacity: 0.9, lineHeight: "1.8", marginBottom: "20px", fontSize: "clamp(0.95rem, 2vw, 1.05rem)" }}>
-              India's trusted partner for heavy & over-dimensional cargo transportation since 2019.
+            <p
+              style={{
+                opacity: 0.9,
+                lineHeight: "1.8",
+                marginBottom: "20px",
+                fontSize: "clamp(0.95rem, 2vw, 1.05rem)",
+              }}
+            >
+              India's trusted partner for heavy & over-dimensional cargo
+              transportation since 2019.
             </p>
 
             <div style={{ margin: "30px 0" }}>
-              <p style={{ fontWeight: 600, marginBottom: "10px", fontSize: "clamp(1rem, 2vw, 1.1rem)" }}>Office Address</p>
-              <p style={{ fontSize: "clamp(0.95rem, 2vw, 1.1rem)", opacity: 0.9, lineHeight: "1.7" }}>
+              <p
+                style={{
+                  fontWeight: 600,
+                  marginBottom: "10px",
+                  fontSize: "clamp(1rem, 2vw, 1.1rem)",
+                }}
+              >
+                Office Address
+              </p>
+              <p
+                style={{
+                  fontSize: "clamp(0.95rem, 2vw, 1.1rem)",
+                  opacity: 0.9,
+                  lineHeight: "1.7",
+                }}
+              >
                 A-113, A-Wing, Jai Ganesh Vision,
                 <br />
-                Akurdi, Pune - 410035
+                Akurdi, Pune - 411035
                 <br />
                 Maharashtra, India
               </p>
@@ -87,22 +117,78 @@ const Footer = () => {
             <p style={{ margin: "20px 0" }}>
               <strong>Email:</strong>
               <br />
-              <a href={`mailto:${email}`} style={{ color: "#00a3e0", fontSize: "clamp(0.95rem, 2vw, 1.05rem)" }} title="Send email to JR Transport">
+              <a
+                href={`mailto:${email}`}
+                style={{
+                  color: "#00a3e0",
+                  fontSize: "clamp(0.95rem, 2vw, 1.05rem)",
+                }}
+                title="Send email to JR Transport"
+              >
                 {email}
               </a>
             </p>
           </div>
 
-          <div>
-            <h3 style={{ fontSize: "clamp(1.5rem, 3vw, 1.8rem)", fontWeight: 700, marginBottom: "25px" }}>Call Us 24×7</h3>
+          {/* ---------------- CENTER SECTION ---------------- */}
+          <div style={{ textAlign: "center" }}>
+            {/* GOOGLE MAP */}
+            <h3
+              style={{
+                fontSize: "clamp(1.4rem, 3vw, 1.6rem)",
+                fontWeight: 700,
+                marginBottom: "18px",
+              }}
+            >
+              Our Location
+            </h3>
 
-            <div style={{ position: "relative", display: "inline-block", width: "100%", maxWidth: "280px" }}>
+            <iframe
+              title="JR Transport Location"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.021998666228!2d73.75980217502066!3d18.531189682544995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9cd38d91f03%3A0xd5e11bc567c90e1c!2sJai%20Ganesh%20Vision%2C%20Akurdi%2C%20Pimpri-Chinchwad%2C%20Maharashtra%20411035!5e0!3m2!1sen!2sin!4v1733916150000!5m2!1sen!2sin"
+              width="100%"
+              height="230"
+              style={{
+                border: 0,
+                borderRadius: "12px",
+                maxWidth: "350px",
+                margin: "0 auto",
+              }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+
+            {/* SPACE BELOW MAP */}
+            <div style={{ height: "30px" }}></div>
+
+            {/* CALL SECTION 24x7 */}
+            <h3
+              style={{
+                fontSize: "clamp(1.5rem, 3vw, 1.8rem)",
+                fontWeight: 700,
+                marginBottom: "25px",
+              }}
+            >
+              Call Us 24×7
+            </h3>
+
+            <div
+              style={{
+                position: "relative",
+                display: "inline-block",
+                width: "100%",
+                maxWidth: "280px",
+              }}
+            >
               <button
                 onClick={() => setShowPhoneDropdown(!showPhoneDropdown)}
-                onMouseEnter={() => window.innerWidth > 768 && setShowPhoneDropdown(true)}
+                onMouseEnter={() =>
+                  window.innerWidth > 768 && setShowPhoneDropdown(true)
+                }
                 style={btnStyle}
               >
-                <FaPhone style={{ fontSize: "clamp(1rem, 2vw, 1.2rem)" }} /> Call Now
+                <FaPhone style={{ fontSize: "clamp(1rem, 2vw, 1.2rem)" }} /> Call
+                Now
               </button>
 
               {showPhoneDropdown && (
@@ -123,30 +209,60 @@ const Footer = () => {
                   }}
                   onMouseLeave={() => setShowPhoneDropdown(false)}
                 >
-                  <div style={dropdownCard(phone1)} onClick={() => copyToClipboard(phone1)}>
+                  <div
+                    style={dropdownCard(phone1)}
+                    onClick={() => copyToClipboard(phone1)}
+                  >
                     <a
                       href={`tel:${phone1}`}
-                      style={{ color: "var(--primary-dark)", textDecoration: "none", fontWeight: 600, flex: 1 }}
-                      title="Call first number"
+                      style={{
+                        color: "var(--primary-dark)",
+                        textDecoration: "none",
+                        fontWeight: 600,
+                        flex: 1,
+                      }}
                       onClick={(e) => e.stopPropagation()}
                     >
                       {phone1}
                     </a>
-                    <span style={{ fontSize: "0.85rem", color: copied === phone1 ? "green" : "#666", display: "flex", alignItems: "center", gap: "5px", whiteSpace: "nowrap" }}>
+                    <span
+                      style={{
+                        fontSize: "0.85rem",
+                        color: copied === phone1 ? "green" : "#666",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "5px",
+                      }}
+                    >
                       {copied === phone1 ? "Copied!" : <><FaCopy /> Copy</>}
                     </span>
                   </div>
 
-                  <div style={dropdownCard(phone2)} onClick={() => copyToClipboard(phone2)}>
+                  <div
+                    style={dropdownCard(phone2)}
+                    onClick={() => copyToClipboard(phone2)}
+                  >
                     <a
                       href={`tel:${phone2}`}
-                      style={{ color: "var(--primary-dark)", textDecoration: "none", fontWeight: 600, flex: 1 }}
-                      title="Call second number"
+                      style={{
+                        color: "var(--primary-dark)",
+                        textDecoration: "none",
+                        fontWeight: 600,
+                        flex: 1,
+                      }}
                       onClick={(e) => e.stopPropagation()}
                     >
                       {phone2}
                     </a>
-                    <span style={{ fontSize: "0.85rem", color: copied === phone2 ? "green" : "#666", display: "flex", alignItems: "center", gap: "5px", whiteSpace: "nowrap" }}>
+                    <span
+                      style={{
+                        fontSize: "0.85rem",
+                        color: copied === phone2 ? "green" : "#666",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "5px",
+                      }}
+                    >
                       {copied === phone2 ? "Copied!" : <><FaCopy /> Copy</>}
                     </span>
                   </div>
@@ -154,46 +270,105 @@ const Footer = () => {
               )}
             </div>
 
+            {/* SOCIAL + EMAIL + CALL */}
             <div style={{ marginTop: "40px" }}>
-              <p style={{ fontWeight: 600, marginBottom: "20px", fontSize: "clamp(1rem, 2vw, 1.1rem)" }}>Connect With Us</p>
+              <p
+                style={{
+                  fontWeight: 600,
+                  marginBottom: "20px",
+                  fontSize: "clamp(1rem, 2vw, 1.1rem)",
+                }}
+              >
+                Connect With Us
+              </p>
+
               <SocialLinks />
 
-              <div style={{ marginTop: "25px", display: "flex", flexDirection: "column", gap: "8px" }}>
+              <div
+                style={{
+                  marginTop: "25px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "8px",
+                }}
+              >
                 <a
                   href={`https://wa.me/${whatsappNumber}`}
                   target="_blank"
                   rel="noreferrer"
-                  style={{ color: "#25D366", textDecoration: "none", fontSize: "clamp(0.9rem, 2vw, 0.95rem)" }}
+                  style={{ color: "#25D366", textDecoration: "none" }}
                 >
                   Quick WhatsApp Chat
                 </a>
                 <a
                   href={`mailto:${email}?subject=Transportation%20Service%20Inquiry`}
-                  style={{ color: "#EA4335", textDecoration: "none", fontSize: "clamp(0.9rem, 2vw, 0.95rem)" }}
+                  style={{ color: "#EA4335", textDecoration: "none" }}
                 >
                   Send Email
                 </a>
-                <a href={`tel:${phone1}`} style={{ color: "var(--secondary)", textDecoration: "none", fontSize: "clamp(0.9rem, 2vw, 0.95rem)" }}>
+                <a
+                  href={`tel:${phone1}`}
+                  style={{ color: "var(--secondary)", textDecoration: "none" }}
+                >
                   Call Now
                 </a>
               </div>
             </div>
           </div>
 
+          {/* ---------------- RIGHT SECTION ---------------- */}
           <div>
-            <h3 style={{ fontSize: "clamp(1.5rem, 3vw, 1.8rem)", fontWeight: 700, marginBottom: "25px" }}>Legal</h3>
+            <h3
+              style={{
+                fontSize: "clamp(1.5rem, 3vw, 1.8rem)",
+                fontWeight: 700,
+                marginBottom: "25px",
+              }}
+            >
+              Legal
+            </h3>
             <ul style={{ listStyle: "none", lineHeight: "2.4", padding: 0 }}>
-              <li><a href="#" style={{ color: "#aaa", fontSize: "clamp(0.95rem, 2vw, 1.05rem)" }}>Terms & Conditions (National Courier)</a></li>
-              <li><a href="#" style={{ color: "#aaa", fontSize: "clamp(0.95rem, 2vw, 1.05rem)" }}>Terms & Conditions (Intracity)</a></li>
-              <li><a href="#" style={{ color: "#aaa", fontSize: "clamp(0.95rem, 2vw, 1.05rem)" }}>Privacy Policy</a></li>
-              <li><a href="#" style={{ color: "#aaa", fontSize: "clamp(0.95rem, 2vw, 1.05rem)" }}>Cookie Policy</a></li>
-              <li><a href="#" style={{ color: "#aaa", fontSize: "clamp(0.95rem, 2vw, 1.05rem)" }}>Disclaimer</a></li>
+              <li>
+                <a href="#" style={{ color: "#aaa" }}>
+                  Terms & Conditions (National Courier)
+                </a>
+              </li>
+              <li>
+                <a href="#" style={{ color: "#aaa" }}>
+                  Terms & Conditions (Intracity)
+                </a>
+              </li>
+              <li>
+                <a href="#" style={{ color: "#aaa" }}>
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" style={{ color: "#aaa" }}>
+                  Cookie Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" style={{ color: "#aaa" }}>
+                  Disclaimer
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
-        <div style={{ textAlign: "center", paddingTop: "clamp(30px, 5vw, 40px)", borderTop: "1px solid rgba(255,255,255,0.1)", fontSize: "clamp(0.9rem, 2vw, 1rem)", opacity: 0.8 }}>
-          © 2025 JR Transport Company. All rights reserved. | Made with Passion in Pune, India
+        {/* COPYRIGHT */}
+        <div
+          style={{
+            textAlign: "center",
+            paddingTop: "clamp(30px, 5vw, 40px)",
+            borderTop: "1px solid rgba(255,255,255,0.1)",
+            fontSize: "clamp(0.9rem, 2vw, 1rem)",
+            opacity: 0.8,
+          }}
+        >
+          © 2025 JR Transport Company. All rights reserved. | Made with Passion
+          in Pune, India
         </div>
       </div>
     </footer>

@@ -11,7 +11,7 @@ import HeroEnquirySplit from './sections/HeroEnquirySplit'
 
 function App() {
   return (
-    <>
+    <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />
 
       {/* Home Section */}
@@ -38,12 +38,12 @@ function App() {
       </div>
 
       {/* Contact → Footer */}
-      <div id="footer">
+      <div id="footer" style={{ marginTop: 'auto' }}>
         <Footer />
       </div>
 
       <ToastContainer position="top-center" autoClose={2000} />
-    </>
+    </div>
   )
 }
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import "./Navbar.css"
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
@@ -21,19 +22,25 @@ const Navbar = () => {
   }
 
   const navItems = [
-    { label: 'Home', id: 'hero-section' },      // updated for HeroEnquirySplit.jsx
+    { label: 'Home', id: 'hero-section' },   
     { label: 'About', id: 'about' },
     { label: 'Services', id: 'services' },
     { label: 'Clients', id: 'clients' },
-    { label: 'Contact', id: 'footer' },         // updated for footer navigation
+    { label: 'Contact', id: 'footer' },
   ]
 
   return (
     <>
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <div className="container nav-container">
+
+          {/* Logo + Company Name */}
           <div className="logo-section">
-            <img src="/assets/company-logo.png" alt="Company Logo" className="navbar-logo" />
+            <img
+              src="/assets/company-logo.png"
+              alt="Company Logo"
+              className="navbar-logo"
+            />
             <div className="logo">JR Transport Company</div>
           </div>
 
@@ -62,6 +69,7 @@ const Navbar = () => {
             <span></span>
             <span></span>
           </div>
+
         </div>
       </nav>
 
