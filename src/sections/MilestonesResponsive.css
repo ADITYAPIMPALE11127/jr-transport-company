@@ -1,117 +1,266 @@
+/* =========================
+   SECTION
+========================= */
+.milestones-section {
+  background: #000;
+  padding: 100px 0;
+  color: #fff;
+}
+
+.milestones-header {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.milestones-header h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, red, white);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.milestones-header p {
+  color: #bbb;
+}
+
+/* =========================
+   TIMELINE
+========================= */
 .timeline-section {
+  max-width: 1100px;
+  margin: auto;
   position: relative;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 0 20px;
 }
 
-.timeline-line {
-  display: none;
-}
-
+/* =========================
+   ITEM
+========================= */
 .timeline-item {
   position: relative;
-  margin-bottom: 50px;
+  display: flex;
+  margin-bottom: 120px;
 }
 
+/* LEFT */
+.timeline-item.left {
+  justify-content: flex-start;
+}
+
+/* RIGHT */
+.timeline-item.right {
+  justify-content: flex-end;
+}
+
+/* =========================
+   CARD
+========================= */
 .timeline-card {
-  background: white;
-  padding: 30px 25px;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 45%;
+  background: linear-gradient(135deg, #0d0d0d, #151515);
+  padding: 30px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 0 35px rgba(255,0,0,0.25),
+    inset 0 0 10px rgba(255,255,255,0.05);
   position: relative;
-}
-
-.timeline-card::before {
-  content: '';
-  position: absolute;
-  left: -30px;
-  top: 30px;
-  width: 20px;
-  height: 20px;
-  background: white;
-  border: 5px solid var(--secondary);
-  border-radius: 50%;
   z-index: 2;
 }
 
+.card-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px; /* Add gap between text and icon */
+}
+
+.card-text {
+  text-align: left;
+  flex: 1;
+  min-width: 0; /* Prevent text from overflowing */
+}
+
+.card-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+}
+
+/* Updated for Material-UI icons (SVG) */
+.card-icon svg {
+  width: 40px !important;
+  height: 40px !important;
+  color: red !important;
+  fill: red !important;
+}
+
 .timeline-card h4 {
-  font-size: clamp(1.8rem, 4vw, 2.2rem);
-  color: var(--primary);
-  font-weight: 700;
-  margin-bottom: 10px;
+  color: red;
+  font-size: 2.2rem;
+  margin-bottom: 8px;
 }
 
 .timeline-card h5 {
-  font-size: clamp(1.2rem, 3vw, 1.4rem);
+  color: #fff;
   margin: 10px 0;
-  color: var(--primary-dark);
+  font-size: 1.4rem;
 }
 
 .timeline-card p {
-  color: var(--gray);
-  font-size: clamp(0.95rem, 2vw, 1.05rem);
-  line-height: 1.6;
+  color: #bbb;
+  font-size: 1.1rem;
+  line-height: 1.5;
 }
 
-@media (min-width: 768px) {
-  .timeline-line {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 4px;
-    height: 100%;
-    background: linear-gradient(to bottom, var(--primary), var(--secondary));
-    transform: translateX(-50%);
-    border-radius: 2px;
-  }
+/* Year badge styling */
+.year-badge {
+  display: inline-block;
+  background: rgba(255, 0, 0, 0.2);
+  color: #ff4444;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  font-size: 1rem;
+}
+
+/* =========================
+   DESKTOP CURVED CONNECTORS
+========================= */
+.timeline-item:first-child::after {
+  display: none;
+}
+
+.timeline-item.left::after {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 45%;
+  width: 240px;
+  height: 220px;
+  border-right: 6px dotted red;
+  border-bottom: 6px dotted red;
+  border-radius: 0 0 60px 0;
+  transform: translateY(-50%);
+}
+
+.timeline-item.right::after {
+  content: "";
+  position: absolute;
+  top: 0%;
+  right: 45%;
+  width: 280px;
+  height: 220px;
+  border-left: 6px dotted red;
+  border-bottom: 6px dotted red;
+  border-radius: 0 0 0 60px;
+  transform: translateY(-50%);
+}
+
+/* =========================
+   MOBILE (CONNECTED LINE)
+========================= */
+@media (max-width: 768px) {
 
   .timeline-item {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: center;
-    margin-bottom: 60px;
+    justify-content: center !important;
+    margin-bottom: 80px;
   }
 
-  .timeline-item:nth-child(even) .timeline-card {
-    grid-column: 2;
+  .timeline-card {
+    width: 90%;
+    margin: 0 auto;
   }
 
-  .timeline-item:nth-child(odd) .timeline-card {
-    grid-column: 1;
-    text-align: right;
+  /* REMOVE DESKTOP CURVES */
+  .timeline-item.left::after,
+  .timeline-item.right::after {
+    content: none;
   }
 
-  .timeline-card::before {
-    left: auto;
-    right: -50px;
+  /* STRAIGHT CONNECTING LINE */
+  .timeline-item::before {
+    content: "";
+    position: absolute;
+    left: 30px;
+    top: 0px;
+    height: calc(100% + 80px);
+    border-left: 4px dotted red;
+    z-index: 1;
   }
 
-  .timeline-item:nth-child(even) .timeline-card::before {
-    right: auto;
-    left: -50px;
+  /* FIRST ITEM: NO LINE ABOVE */
+  .timeline-item:first-child::before {
+    top: 50%;
+    height: calc(100% + 40px);
+  }
+
+  /* LAST ITEM: NO LINE BELOW */
+  .timeline-item:last-child::before {
+    display: none;
+  }
+
+  .card-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .card-text {
+    margin-bottom: 0;
+    width: 100%;
+  }
+
+  .card-icon {
+    width: 100%;
+    text-align: left;
+    margin-left: 0;
+    margin-top: 0;
+    justify-content: flex-start;
+  }
+
+  /* Mobile size for icons */
+  .card-icon svg {
+    width: 40px !important;
+    height: 40px !important;
   }
 }
 
-@media (max-width: 767px) {
-  .timeline-section {
-    padding-left: 40px;
+/* Additional responsive adjustments for smaller screens */
+@media (max-width: 480px) {
+  .milestones-section {
+    padding: 60px 0;
   }
-
-  .timeline-section::before {
-    content: '';
-    position: absolute;
-    left: 10px;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: linear-gradient(to bottom, var(--primary), var(--secondary));
-    border-radius: 2px;
+  
+  .milestones-header {
+    margin-bottom: 60px;
   }
-
-  .timeline-card::before {
-    left: -43px;
+  
+  .milestones-header h2 {
+    font-size: 2.2rem;
+  }
+  
+  .timeline-card h4 {
+    font-size: 1.8rem;
+  }
+  
+  .timeline-card {
+    padding: 25px;
+    width: 95%;
+  }
+  
+  .timeline-item {
+    margin-bottom: 70px;
+  }
+  
+  /* Adjust connecting line position for mobile */
+  .timeline-item::before {
+    left: 20px;
   }
 }

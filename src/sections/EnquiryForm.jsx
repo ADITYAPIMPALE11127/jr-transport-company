@@ -1,38 +1,33 @@
 import React, { useState } from "react";
-import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 import SocialLinks from "../components/SocialLinks";
+
 const EnquiryForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
+    company: "",
     message: "",
   });
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
-  // Validate individual fields
   const validateField = (name, value) => {
     let msg = "";
 
     if (name === "name" && !value.trim()) msg = "Name is required";
 
-    if (name === "email") {
-      if (!value.trim()) msg = "Email is required";
-      else {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(value)) msg = "Enter a valid email";
-      }
+    if (name === "email" && value.trim()) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value)) msg = "Enter a valid email";
     }
 
     if (name === "phone") {
       if (!value.trim()) msg = "Phone number is required";
-      else {
-        const phoneRegex = /^[0-9]{10}$/;
-        if (!phoneRegex.test(value)) msg = "Phone must be 10 digits";
-      }
+      else if (!/^[0-9]{10}$/.test(value))
+        msg = "Phone must be 10 digits";
     }
 
     if (name === "message" && !value.trim())
@@ -41,32 +36,32 @@ const EnquiryForm = () => {
     return msg;
   };
 
-  // Handle change with live validation
   const handleChange = (e) => {
     const { name, value } = e.target;
 
     setFormData({ ...formData, [name]: value });
-
-    setErrors({
-      ...errors,
-      [name]: validateField(name, value),
-    });
+    setErrors({ ...errors, [name]: validateField(name, value) });
   };
 
-  // Validate all fields before submit
   const validateAll = () => {
     let newErrors = {};
-    Object.keys(formData).forEach((key) => {
+    ["name", "phone", "message"].forEach((key) => {
       const msg = validateField(key, formData[key]);
       if (msg) newErrors[key] = msg;
     });
+
+    if (formData.email.trim()) {
+      const emailMsg = validateField("email", formData.email);
+      if (emailMsg) newErrors.email = emailMsg;
+    }
+
     return newErrors;
   };
 
-  const sendEmail = async (e) => {
+  /* -------------------- FIXED SUBMIT -------------------- */
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check all fields at once
     const newErrors = validateAll();
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -77,87 +72,103 @@ const EnquiryForm = () => {
     setLoading(true);
 
     try {
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        formData,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      const response = await fetch(
+        "http://localhost:5000/api/enquiry",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
       );
 
-      toast.success("Message sent successfully! 🎉");
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to send enquiry");
+      }
+
+      console.log("📨 Server response:", data);
+      toast.success("Enquiry submitted successfully!");
 
       setFormData({
         name: "",
         email: "",
         phone: "",
+        company: "",
         message: "",
       });
       setErrors({});
-    } catch (err) {
-      console.error(err);
-      toast.error("Failed to send message. Try again.");
+    } catch (error) {
+      console.error("❌ Submit error:", error);
+      toast.error("Failed to submit enquiry. Please try again.");
     }
 
     setLoading(false);
   };
 
-  // Helper for red border if error exists
   const inputStyle = (field) => ({
     border: errors[field] ? "2px solid #ff4d4d" : "",
   });
 
   return (
     <div className="hero-right">
-      <form className="enquiry-form" onSubmit={sendEmail}>
+      <form className="enquiry-form" onSubmit={handleSubmit}>
         <h2>Enquire Now</h2>
 
-        {/* NAME */}
         <input
           type="text"
           name="name"
-          style={inputStyle("name")}
-          placeholder="Your Name"
+          placeholder="Your Name *"
           value={formData.name}
           onChange={handleChange}
+          style={inputStyle("name")}
         />
         {errors.name && <small className="error">{errors.name}</small>}
 
-        {/* EMAIL */}
         <input
           type="email"
           name="email"
-          style={inputStyle("email")}
-          placeholder="Email Address"
+          placeholder="Email Address (optional)"
           value={formData.email}
           onChange={handleChange}
+          style={inputStyle("email")}
         />
         {errors.email && <small className="error">{errors.email}</small>}
 
-        {/* PHONE */}
         <input
           type="text"
           name="phone"
-          style={inputStyle("phone")}
-          placeholder="Phone Number"
+          placeholder="Phone Number *"
           value={formData.phone}
           onChange={handleChange}
+          style={inputStyle("phone")}
         />
         {errors.phone && <small className="error">{errors.phone}</small>}
 
-        {/* MESSAGE */}
+        <input
+          type="text"
+          name="company"
+          placeholder="Company Name (optional)"
+          value={formData.company}
+          onChange={handleChange}
+        />
+
         <textarea
           name="message"
-          style={inputStyle("message")}
-          placeholder="Message"
           rows="4"
+          placeholder="Message *"
           value={formData.message}
           onChange={handleChange}
-        ></textarea>
+          style={inputStyle("message")}
+        />
         {errors.message && <small className="error">{errors.message}</small>}
 
         <button type="submit" disabled={loading}>
-          {loading ? "Sending..." : "Submit"}
+          {loading ? "Submitting..." : "Submit Enquiry"}
         </button>
+
         <SocialLinks />
       </form>
     </div>
