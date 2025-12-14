@@ -58,7 +58,7 @@ const EnquiryForm = () => {
     return newErrors;
   };
 
-  /* -------------------- FIXED SUBMIT -------------------- */
+  /* -------------------- SUBMIT (PRODUCTION) -------------------- */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -73,7 +73,7 @@ const EnquiryForm = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/enquiry",
+        "https://backend-email-service-for-jr-transport.onrender.com/api/enquiry",
         {
           method: "POST",
           headers: {
