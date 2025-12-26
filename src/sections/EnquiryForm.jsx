@@ -1,6 +1,18 @@
 import React, { useState } from "react";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import emailjs from "@emailjs/browser";
+import { EMAILJS_CONFIG } from "../utils/emailjsConfig";
 import SocialLinks from "../components/SocialLinks";
+import {
+  TextField,
+  Button,
+  Paper,
+  Box,
+  Typography,
+  Grid,
+  CircularProgress,
+} from "@mui/material";
 
 const EnquiryForm = () => {
   const [formData, setFormData] = useState({
@@ -26,19 +38,16 @@ const EnquiryForm = () => {
 
     if (name === "phone") {
       if (!value.trim()) msg = "Phone number is required";
-      else if (!/^[0-9]{10}$/.test(value))
-        msg = "Phone must be 10 digits";
+      else if (!/^[0-9]{10}$/.test(value)) msg = "Phone must be 10 digits";
     }
 
-    if (name === "message" && !value.trim())
-      msg = "Message cannot be empty";
+    if (name === "message" && !value.trim()) msg = "Message cannot be empty";
 
     return msg;
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     setFormData({ ...formData, [name]: value });
     setErrors({ ...errors, [name]: validateField(name, value) });
   };
@@ -58,40 +67,56 @@ const EnquiryForm = () => {
     return newErrors;
   };
 
-  /* -------------------- SUBMIT (PRODUCTION) -------------------- */
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newErrors = validateAll();
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      toast.error("Please fix the highlighted errors");
+      toast.warn("Please fix the highlighted errors.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+      });
       return;
     }
 
     setLoading(true);
 
     try {
-      const response = await fetch(
-        "https://backend-email-service-for-jr-transport.onrender.com/api/enquiry",
+      console.log("📤 Sending enquiry data via EmailJS:", formData);
+
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
         {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          message: formData.message,
+        },
+        EMAILJS_CONFIG.PUBLIC_KEY
       );
 
-      const data = await response.json();
+      console.log("✅ EmailJS response:", result);
 
-      if (!response.ok) {
-        throw new Error(data.message || "Failed to send enquiry");
-      }
+      toast.success("Enquiry submitted successfully! We'll get back to you soon.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+      });
 
-      console.log("📨 Server response:", data);
-      toast.success("Enquiry submitted successfully!");
-
+      // Reset form
       setFormData({
         name: "",
         email: "",
@@ -100,77 +125,155 @@ const EnquiryForm = () => {
         message: "",
       });
       setErrors({});
-    } catch (error) {
-      console.error("❌ Submit error:", error);
-      toast.error("Failed to submit enquiry. Please try again.");
-    }
 
-    setLoading(false);
+    } catch (error) {
+      console.error("❌ EmailJS error details:", error);
+
+      let userMessage = "Failed to send enquiry. Please try again later.";
+
+      if (error.text) {
+        userMessage = `Email service error: ${error.text}`;
+      } else if (error.message) {
+        userMessage = error.message;
+      }
+
+      toast.error(`Submission failed: ${userMessage}`, {
+        position: "top-right",
+        autoClose: 10000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "colored",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const inputStyle = (field) => ({
-    border: errors[field] ? "2px solid #ff4d4d" : "",
-  });
+
 
   return (
     <div className="hero-right">
-      <form className="enquiry-form" onSubmit={handleSubmit}>
-        <h2>Enquire Now</h2>
+      {/* ToastContainer to render all notifications */}
+      <ToastContainer />
 
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name *"
-          value={formData.name}
-          onChange={handleChange}
-          style={inputStyle("name")}
-        />
-        {errors.name && <small className="error">{errors.name}</small>}
+      <Paper
+        elevation={3}
+        sx={{
+          p: 3,
+          borderRadius: 3,
+          backgroundColor: 'rgba(255, 255, 255, 0.95)',
+          backdropFilter: 'blur(10px)',
+          border: '1px solid rgba(255, 255, 255, 0.3)',
+        }}
+      >
+        <Typography variant="h4" component="h2" gutterBottom align="center" sx={{ mb: 3 }}>
+          Enquire Now
+        </Typography>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email Address (optional)"
-          value={formData.email}
-          onChange={handleChange}
-          style={inputStyle("email")}
-        />
-        {errors.email && <small className="error">{errors.email}</small>}
+        <Box component="form" onSubmit={handleSubmit} noValidate>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Your Name *"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                error={!!errors.name}
+                helperText={errors.name}
+                disabled={loading}
+                required
+              />
+            </Grid>
 
-        <input
-          type="text"
-          name="phone"
-          placeholder="Phone Number *"
-          value={formData.phone}
-          onChange={handleChange}
-          style={inputStyle("phone")}
-        />
-        {errors.phone && <small className="error">{errors.phone}</small>}
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Email Address (optional)"
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                error={!!errors.email}
+                helperText={errors.email}
+                disabled={loading}
+              />
+            </Grid>
 
-        <input
-          type="text"
-          name="company"
-          placeholder="Company Name (optional)"
-          value={formData.company}
-          onChange={handleChange}
-        />
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Phone Number *"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                error={!!errors.phone}
+                helperText={errors.phone}
+                disabled={loading}
+                required
+              />
+            </Grid>
 
-        <textarea
-          name="message"
-          rows="4"
-          placeholder="Message *"
-          value={formData.message}
-          onChange={handleChange}
-          style={inputStyle("message")}
-        />
-        {errors.message && <small className="error">{errors.message}</small>}
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Company Name (optional)"
+                name="company"
+                value={formData.company}
+                onChange={handleChange}
+                disabled={loading}
+              />
+            </Grid>
 
-        <button type="submit" disabled={loading}>
-          {loading ? "Submitting..." : "Submit Enquiry"}
-        </button>
+            <Grid item xs={12}>
+              <TextField
+                fullWidth
+                label="Message *"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                error={!!errors.message}
+                helperText={errors.message}
+                disabled={loading}
+                multiline
+                rows={4}
+                required
+              />
+            </Grid>
 
-        <SocialLinks />
-      </form>
+            <Grid item xs={12}>
+              <Button
+                type="submit"
+                variant="contained"
+                fullWidth
+                disabled={loading}
+                sx={{
+                  mt: 2,
+                  py: 1.5,
+                  background: 'linear-gradient(135deg, #FF0000, #FF6666)',
+                  '&:hover': {
+                    background: 'linear-gradient(135deg, #CC0000, #FF3333)',
+                  },
+                }}
+                startIcon={loading ? <CircularProgress size={20} color="inherit" /> : null}
+              >
+                {loading ? 'Submitting...' : 'Submit Enquiry'}
+              </Button>
+            </Grid>
+          </Grid>
+        </Box>
+
+        <Box sx={{ mt: 3, pt: 2, borderTop: '1px solid #eee' }}>
+          <Typography variant="body2" color="text.secondary" gutterBottom>
+            * Required fields
+            <br />
+            We'll respond within 24 hours
+          </Typography>
+          <SocialLinks />
+        </Box>
+      </Paper>
     </div>
   );
 };

@@ -6,7 +6,7 @@
   top: 0;
   width: 100%;
   padding: 18px 0;
-  background: #000; 
+  background: transparent;
   color: #fff;
   transition: 0.3s ease;
   z-index: 1000;
@@ -38,17 +38,11 @@
   height: auto;
 }
 
-/* 🔥 Gradient Text: red → white */
+/* Red Text */
 .logo {
   font-size: 1.6rem;
   font-weight: 700;
-  background: linear-gradient(
-    to right,
-    #ff0000,
-    #ffffff
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #ff0000;
 }
 
 /* -------------------------------
@@ -122,14 +116,14 @@
 }
 
 .mobile-menu a {
-  color: white;
+  color: #ff0000;
   font-size: 1.3rem;
   font-weight: 500;
   text-decoration: none;
 }
 
 .mobile-menu a:hover {
-  color: #ff6a00;
+  color: #ffffff;
 }
 
 /* -------------------------------

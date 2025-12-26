@@ -15,7 +15,8 @@ import {
   FaIndustry,
   FaShip,
   FaWarehouse,
-  FaBuilding
+  FaBuilding,
+  FaCheck
 } from 'react-icons/fa';
 import { styled, alpha } from '@mui/material/styles';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -574,12 +575,11 @@ const Services = () => {
                                 mr: 1.5,
                                 mt: '2px',
                                 fontSize: { xs: '0.9rem', md: '1rem' },
-                                fontWeight: 'bold',
                                 flexShrink: 0,
                                 transition: 'all 0.2s ease',
                               }}
                             >
-                              ✓
+                              <FaCheck />
                             </Box>
                             <Box component="span" sx={{ lineHeight: 1.4 }}>
                               {feature}

@@ -234,6 +234,10 @@
     padding: 90px 0 50px;
   }
 
+  .hero-container {
+    gap: 30px;
+  }
+
   .hero-left {
     padding: 25px;
     text-align: center;
