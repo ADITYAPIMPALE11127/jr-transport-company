@@ -3,11 +3,11 @@ import Milestones from './sections/Milestones'
 import Solutions from './sections/Solutions'
 import Services from './sections/Services'
 import Clients from './sections/Clients'
-import About from './sections/About'
 import Footer from './components/Footer'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import HeroEnquirySplit from './sections/HeroEnquirySplit'
+// Remove About import since it's now a separate page
 
 function App() {
   return (
@@ -32,10 +32,7 @@ function App() {
         <Clients />
       </div>
 
-      {/* About Section */}
-      <div id="about">
-        <About />
-      </div>
+      {/* About Section REMOVED - Now accessible via /about route */}
 
       {/* Contact → Footer */}
       <div id="footer" style={{ marginTop: 'auto' }}>

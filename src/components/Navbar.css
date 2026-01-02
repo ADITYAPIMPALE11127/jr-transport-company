@@ -5,7 +5,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 18px 0;
+  padding: 15px 0;
   background: transparent;
   color: #fff;
   transition: 0.3s ease;
@@ -22,6 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 20px;
 }
 
 /* -------------------------------
@@ -30,19 +31,49 @@
 .logo-section {
   display: flex;
   align-items: center;
-  gap: 12px;
+  flex: 1;
+  min-width: 0; /* Allows text truncation */
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 10px;
+  min-width: 0;
 }
 
 .navbar-logo {
-  width: 55px;
-  height: auto;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
-/* Red Text */
-.logo {
-  font-size: 1.6rem;
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+/* Company Name - Desktop */
+.logo-title {
+  font-size: 1.5rem;
   font-weight: 700;
   color: #ff0000;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.logo-part-1 {
+  display: inline;
+  font-weight: 800;
+}
+
+.logo-part-2 {
+  display: inline;
+  margin-left: 4px;
 }
 
 /* -------------------------------
@@ -50,7 +81,8 @@
 -------------------------------- */
 .nav-links {
   display: flex;
-  gap: 32px;
+  gap: 24px;
+  flex-shrink: 0;
 }
 
 .nav-links a {
@@ -59,10 +91,16 @@
   font-weight: 500;
   text-decoration: none;
   transition: 0.3s ease;
+  white-space: nowrap;
 }
 
 .nav-links a:hover {
   color: #ffffff;
+}
+
+.nav-links a.active {
+  color: #ffffff;
+  font-weight: 600;
 }
 
 /* -------------------------------
@@ -71,12 +109,15 @@
 .hamburger {
   display: none;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
   cursor: pointer;
+  z-index: 1001;
+  margin-left: 15px;
+  flex-shrink: 0;
 }
 
 .hamburger span {
-  width: 28px;
+  width: 25px;
   height: 3px;
   background: #fff;
   transition: 0.3s ease;
@@ -84,13 +125,13 @@
 
 /* Active hamburger animation */
 .hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
+  transform: rotate(45deg) translate(5px, 5px);
 }
 .hamburger.active span:nth-child(2) {
   opacity: 0;
 }
 .hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* -------------------------------
@@ -126,9 +167,24 @@
   color: #ffffff;
 }
 
+.mobile-menu a.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
 /* -------------------------------
-   RESPONSIVE
+   RESPONSIVE DESIGN
 -------------------------------- */
+@media (max-width: 992px) {
+  .logo-title {
+    font-size: 1.3rem;
+  }
+  
+  .nav-links {
+    gap: 18px;
+  }
+}
+
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -136,5 +192,124 @@
 
   .hamburger {
     display: flex;
+  }
+
+  .nav-container {
+    padding: 0 15px;
+  }
+
+  /* Mobile-optimized logo layout */
+  .logo-link {
+    gap: 8px;
+    flex: 1;
+  }
+
+  .navbar-logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  /* Simplified mobile version */
+  .logo-title {
+    font-size: 1.1rem;
+    white-space: nowrap;
+    overflow: visible;
+  }
+
+  .logo-part-1 {
+    font-size: 1.2rem;
+    font-weight: 800;
+  }
+
+  .logo-part-2 {
+    font-size: 1rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-left: 2px;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar {
+    padding: 12px 0;
+  }
+
+  .nav-container {
+    padding: 0 12px;
+  }
+
+  .logo-link {
+    gap: 6px;
+  }
+
+  .navbar-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Even more compact for small phones */
+  .logo-title {
+    font-size: 1rem;
+    line-height: 1.1;
+  }
+
+  .logo-part-1 {
+    font-size: 1.1rem;
+  }
+
+  .logo-part-2 {
+    font-size: 0.9rem;
+  }
+
+  .hamburger {
+    margin-left: 12px;
+  }
+
+  .hamburger span {
+    width: 22px;
+  }
+
+  .mobile-menu {
+    width: 75%;
+    padding: 70px 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  /* Ultra-compact for very small screens */
+  .logo-title {
+    font-size: 0.95rem;
+  }
+
+  .logo-part-1 {
+    font-size: 1rem;
+  }
+
+  .logo-part-2 {
+    font-size: 0.85rem;
+  }
+
+  .navbar-logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo-link {
+    gap: 5px;
+  }
+
+  .mobile-menu {
+    width: 80%;
+  }
+}
+
+/* For extremely small screens, show just "JR Transport" */
+@media (max-width: 350px) {
+  .logo-title {
+    font-size: 0.9rem;
+  }
+  
+  .logo-part-2 {
+    font-size: 0.82rem;
   }
 }

@@ -4,32 +4,32 @@ import { Factory, Truck, Ship, Package, Ruler, Scale } from 'lucide-react'
 const Solutions = () => {
   const solutions = [
     {
-      icon: <Factory />,
+      icon: <Factory color="#FF6B35" />,
       title: "Industrial Projects Transport",
       desc: "End-to-end logistics for complete industrial projects including plant relocation & heavy machinery shifting across India"
     },
     {
-      icon: <Truck />,
+      icon: <Truck color="#4CAF50" />,
       title: "Heavy Equipment Logistics",
       desc: "Safe & timely transportation of construction machinery, cranes, excavators, and oversized equipment PAN India"
     },
     {
-      icon: <Ship />,
+      icon: <Ship color="#2196F3" />,
       title: "Container Transportation",
       desc: "Full container load (FCL) & less than container load (LCL) services with door-to-door delivery nationwide"
     },
     {
-      icon: <Package />,
+      icon: <Package color="#FF9800" />,
       title: "Bulk Cargo Solutions",
       desc: "Specialized handling of bulk commodities - cement, steel, grains, chemicals with dedicated fleet"
     },
     {
-      icon: <Ruler />,
+      icon: <Ruler color="#9C27B0" />,
       title: "Over-Dimension Cargo",
       desc: "Expertise in moving ODC consignments up to 60m length, 8m width & 1000+ MT with route surveys & escorts"
     },
     {
-      icon: <Scale />,
+      icon: <Scale color="#F44336" />,
       title: "Over-Weight Consignments",
       desc: "Hydraulic axle trailers & specialized equipment for super heavy lifts up to 1500 MT single unit"
     },
@@ -92,7 +92,7 @@ const Solutions = () => {
             padding: '0.75rem 1.5rem',
             background: 'rgba(0, 100, 235, 0.08)',
             borderRadius: '50px',
-            color: 'var(--primary)',
+            color: '#000000',
             fontSize: 'clamp(0.875rem, 1.5vw, 1rem)',
             fontWeight: 600,
             letterSpacing: '0.5px',
@@ -116,16 +116,13 @@ const Solutions = () => {
           <h2 style={{
             fontSize: 'clamp(2rem, 4vw, 3.5rem)',
             fontWeight: 800,
-            color: '#1A1F36',
+            color: '#000000',
             marginBottom: '1.5rem',
             lineHeight: 1.2,
             letterSpacing: '-0.5px'
           }}>
-            <span style={{ 
-              background: 'linear-gradient(135deg, var(--primary) 0%, #0052CC 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
+            <span style={{
+              color: '#000000'
             }}>
               Specialized Transport
             </span>
@@ -135,7 +132,7 @@ const Solutions = () => {
           
           <p style={{
             fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-            color: '#4A5568',
+            color: '#000000',
             maxWidth: '768px',
             margin: '0 auto',
             lineHeight: 1.7,
@@ -164,18 +161,19 @@ const Solutions = () => {
                 border: '1px solid rgba(0, 0, 0, 0.05)',
                 transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                 overflow: 'hidden',
-                cursor: 'default'
+                cursor: 'default',
+                boxShadow: '0 10px 30px rgba(255, 0, 0, 0.06)'
               }}
               onMouseEnter={(e) => {
                 if (window.innerWidth > 768) {
                   e.currentTarget.style.transform = 'translateY(-12px)';
-                  e.currentTarget.style.boxShadow = '0 25px 50px rgba(0, 48, 135, 0.15)';
+                  e.currentTarget.style.boxShadow = '0 25px 50px rgba(255, 0, 0, 0.15)';
                   e.currentTarget.style.borderColor = 'rgba(0, 100, 235, 0.2)';
                 }
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.06)';
+                e.currentTarget.style.boxShadow = '0 10px 30px rgba(255, 0, 0, 0.06)';
                 e.currentTarget.style.borderColor = 'rgba(0, 0, 0, 0.05)';
               }}
               onTouchStart={(e) => {
@@ -225,7 +223,7 @@ const Solutions = () => {
               <h3 style={{
                 fontSize: 'clamp(1.25rem, 2.5vw, 1.5rem)',
                 fontWeight: 700,
-                color: '#1A1F36',
+                color: '#000000',
                 marginBottom: 'clamp(0.75rem, 2vw, 1rem)',
                 lineHeight: 1.4
               }}>
@@ -234,7 +232,7 @@ const Solutions = () => {
 
               <p style={{
                 fontSize: 'clamp(0.95rem, 1.5vw, 1.0625rem)',
-                color: '#4A5568',
+                color: '#000000',
                 lineHeight: 1.7,
                 marginBottom: 'clamp(1.5rem, 3vw, 2rem)',
                 opacity: 0.9
@@ -247,7 +245,7 @@ const Solutions = () => {
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                color: 'var(--primary)',
+                color: '#000000',
                 fontWeight: 600,
                 fontSize: '0.9375rem',
                 opacity: 0,
@@ -352,7 +350,7 @@ const Solutions = () => {
           <p style={{
             marginTop: '1.5rem',
             fontSize: '0.875rem',
-            color: '#718096',
+                color: '#000000',
             opacity: 0.8
           }}>
             Trusted by 500+ industrial clients across India
@@ -372,7 +370,7 @@ const Solutions = () => {
           }
           
           article {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04) !important;
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.04) !important;
           }
           
           button {
