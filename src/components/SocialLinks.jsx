@@ -1,5 +1,5 @@
 import React from "react";
-import { FaWhatsapp, FaLinkedin, FaPhone } from "react-icons/fa";
+import { FaWhatsapp, FaPhone } from "react-icons/fa";
 
 const SocialLinks = () => {
   const linkStyle = {
@@ -45,30 +45,10 @@ const SocialLinks = () => {
       </a>
 
       <a
-        href="https://www.linkedin.com/company/your-company"
-        target="_blank"
-        rel="noreferrer"
-        style={{
-          ...linkStyle,
-          background: "#0077b5",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "scale(1.1)";
-          e.currentTarget.style.boxShadow = "0 10px 30px rgba(0,0,0,0.4)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "scale(1)";
-          e.currentTarget.style.boxShadow = "0 6px 20px rgba(0,0,0,0.3)";
-        }}
-      >
-        <FaLinkedin />
-      </a>
-
-      <a
         href="tel:+919766958932"
         style={{
           ...linkStyle,
-          background: "#00d66b",
+          background: "#28bad4",
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = "scale(1.1)";

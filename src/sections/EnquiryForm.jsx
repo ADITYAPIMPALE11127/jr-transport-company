@@ -5,7 +5,6 @@ import emailjs from "@emailjs/browser";
 import { EMAILJS_CONFIG } from "../utils/emailjsConfig";
 import SocialLinks from "../components/SocialLinks";
 import {
-  TextField,
   Button,
   Paper,
   Box,
@@ -172,75 +171,115 @@ const EnquiryForm = () => {
           Enquire Now
         </Typography>
 
-        <Box component="form" onSubmit={handleSubmit} noValidate>
+        <Box component="form" onSubmit={handleSubmit} noValidate className="enquiry-form">
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Your Name *"
+              <input
+                type="text"
+                placeholder="Your Name *"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                error={!!errors.name}
-                helperText={errors.name}
                 disabled={loading}
                 required
+                style={{
+                  width: '100%',
+                  padding: '16px',
+                  border: `2px solid ${errors.name ? '#FF3333' : 'rgba(224, 224, 224, 0.8)'}`,
+                  borderRadius: '12px',
+                  fontSize: '16px',
+                  transition: '0.3s',
+                  boxSizing: 'border-box',
+                }}
               />
+              {errors.name && <div className="error">{errors.name}</div>}
             </Grid>
 
             <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Email Address (optional)"
+              <input
                 type="email"
+                placeholder="Email Address (optional)"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                error={!!errors.email}
-                helperText={errors.email}
                 disabled={loading}
+                style={{
+                  width: '100%',
+                  padding: '16px',
+                  border: `2px solid ${errors.email ? '#FF3333' : 'rgba(224, 224, 224, 0.8)'}`,
+                  borderRadius: '12px',
+                  fontSize: '16px',
+                  transition: '0.3s',
+                  boxSizing: 'border-box',
+                }}
               />
+              {errors.email && <div className="error">{errors.email}</div>}
             </Grid>
 
             <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Phone Number *"
+              <input
+                type="tel"
+                placeholder="Phone Number *"
                 name="phone"
                 value={formData.phone}
                 onChange={handleChange}
-                error={!!errors.phone}
-                helperText={errors.phone}
                 disabled={loading}
                 required
+                style={{
+                  width: '100%',
+                  padding: '16px',
+                  border: `2px solid ${errors.phone ? '#FF3333' : 'rgba(224, 224, 224, 0.8)'}`,
+                  borderRadius: '12px',
+                  fontSize: '16px',
+                  transition: '0.3s',
+                  boxSizing: 'border-box',
+                }}
               />
+              {errors.phone && <div className="error">{errors.phone}</div>}
             </Grid>
 
             <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Company Name (optional)"
+              <input
+                type="text"
+                placeholder="Company Name (optional)"
                 name="company"
                 value={formData.company}
                 onChange={handleChange}
                 disabled={loading}
+                style={{
+                  width: '100%',
+                  padding: '16px',
+                  border: '2px solid rgba(224, 224, 224, 0.8)',
+                  borderRadius: '12px',
+                  fontSize: '16px',
+                  transition: '0.3s',
+                  boxSizing: 'border-box',
+                }}
               />
             </Grid>
 
             <Grid item xs={12}>
-              <TextField
-                fullWidth
-                label="Message *"
+              <textarea
+                placeholder="Message *"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                error={!!errors.message}
-                helperText={errors.message}
                 disabled={loading}
-                multiline
-                rows={4}
                 required
+                rows={4}
+                style={{
+                  width: '100%',
+                  padding: '16px',
+                  border: `2px solid ${errors.message ? '#FF3333' : 'rgba(224, 224, 224, 0.8)'}`,
+                  borderRadius: '12px',
+                  fontSize: '16px',
+                  transition: '0.3s',
+                  boxSizing: 'border-box',
+                  resize: 'vertical',
+                  minHeight: '120px',
+                }}
               />
+              {errors.message && <div className="error">{errors.message}</div>}
             </Grid>
 
             <Grid item xs={12}>
