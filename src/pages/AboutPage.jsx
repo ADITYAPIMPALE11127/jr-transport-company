@@ -21,11 +21,11 @@ const AboutPage = () => {
       title: "Built on Two Decades of Trust",
       isFounderSlide: true,
       founders: [
-        { name: "Mr. Rashid Kamate", image: "/assets/co-fon-1.jpeg" },
-        { name: "Mr. Kadar Vali Kokane", image: "/assets/co-fon-2.jpeg" }
+        { name: "Mr. Rashid Kamate", image: "/assets/co-fon-1.jpeg",designation:"Founder" },
+        { name: "Mr. Kadar Vali Kokane", image: "/assets/co-fon-2.jpeg",designation:'Managing Director' }
       ],
       content: [
-        "Founded in 2019 (Registered under MSME – UDYAM-MH-2020xxxx)",
+        "Founded in 2020 (Registered under MSME – UDYAM-MH-2020xxxx)",
         "Started operations in 2019 with 20+ years of legacy experience",
         "Professional, relationship-driven approach with PAN India reach",
         "Head Office: Akurdi, Pune | Hubs: Chakan & Bhosari"
@@ -36,10 +36,10 @@ const AboutPage = () => {
       title: "Heavy & ODC Transport Experts",
       image: "/assets/hero-bg-4.jpg",
       content: [
-        "Loads up to 100 tons capacity",
+        "Loads up to 130 tons capacity",
         "Dimensions: 22H × 24W × 120L ft",
-        "Specialized in Sugar plants, Boilers, Furnaces, Power equipment",
-        "PAN-India coverage with strong Maharashtra → Gujarat, Karnataka, Tamil Nadu routes"
+        "Specialized in Sugar plants, EOT cranes",
+        "PAN-India with strong coverage in South Region"
       ]
     },
     {
@@ -136,7 +136,7 @@ const AboutPage = () => {
                               />
                               <div className="founder-left-info">
                                 <p className="founder-left-name">{founder.name}</p>
-                                <p className="founder-left-title">Founder & Director</p>
+                                <p className="founder-left-title">{founder.designation}</p>
                               </div>
                             </div>
                           ))}
