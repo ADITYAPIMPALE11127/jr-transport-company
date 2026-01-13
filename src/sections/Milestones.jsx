@@ -5,44 +5,39 @@ import LocationOn from "@mui/icons-material/LocationOn";
 import LocalShipping from "@mui/icons-material/LocalShipping";
 import AcUnit from "@mui/icons-material/AcUnit";
 import Verified from "@mui/icons-material/Verified";
-import ElectricCar from "@mui/icons-material/ElectricCar";
+import Engineering from "@mui/icons-material/Engineering";
+
 
 const timelineData = [
   {
-    year: "2019",
-    title: "Company Founded",
-    desc: "JR Transport started operations from Pune with 5-truck fleet",
+    year: "2020",
+    title: "Inception & Foundation",
+    desc: "JR Transport commenced operations from Pune with a dedicated fleet of 5 heavy-duty trucks, establishing our core transport capabilities.",
     icon: Flag
   },
   {
-    year: "2020",
-    title: "PAN India Expansion",
-    desc: "Network expanded to 20+ states with 50+ trucks",
+    year: "2021",
+    title: "National Expansion",
+    desc: "Successfully scaled operations to establish a robust network spanning over 20 states across India, building extensive logistical reach.",
     icon: LocationOn
   },
   {
-    year: "2021",
-    title: "Heavy ODC Division",
-    desc: "Specialized Over-Dimension Cargo fleet launched",
+    year: "2022",
+    title: "Heavy Haulage Division Growth",
+    desc: "Built a specialized fleet of 50+ experienced heavy-duty vehicles and cultivated partnerships with 100+ reputable clients.",
     icon: LocalShipping
   },
   {
-    year: "2022",
-    title: "Cold Chain Logistics",
-    desc: "Added refrigerated transport for perishable goods",
+    year: "2023",
+    title: "Fleet Diversification",
+    desc: "Expanded our asset base with a comprehensive range of specialized commercial vehicles and state-of-the-art transportation equipment.",
     icon: AcUnit
   },
   {
-    year: "2023",
-    title: "ISO Certified",
-    desc: "Achieved ISO 9001:2015 certification for quality management",
-    icon: Verified
-  },
-  {
     year: "2024",
-    title: "EV Fleet Addition",
-    desc: "Launched eco-friendly electric cargo vehicles",
-    icon: ElectricCar
+    title: "Strategic Machinery Logistics",
+    desc: "Executed a critical project delivering heavy machinery for a major automobile plant expansion, meeting stringent timeline requirements.",
+    icon: Engineering
   },
 ];
 
@@ -52,8 +47,8 @@ const Milestones = () => {
       <div className="container">
 
         <div className="milestones-header">
-          <h2>Our Journey of Excellence</h2>
-          <p className="section-subtitle">Milestones in Transport & Logistics</p>
+          <h2 className="section-title">Milestones in Our Journey</h2>
+          <p className="section-subtitle">Driving Excellence in Transport & Logistics</p>
         </div>
 
         <div className="timeline-section">
@@ -71,8 +66,8 @@ const Milestones = () => {
                     </div>
                     <div className="card-text">
                       <span className="year-badge">{item.year}</span>
-                      <h4>{item.title}</h4>
-                      <p>{item.desc}</p>
+                      <h5 className="milestone-title">{item.title}</h5>
+                      <p className="milestone-desc">{item.desc}</p>
                     </div>
                   </div>
                 </div>

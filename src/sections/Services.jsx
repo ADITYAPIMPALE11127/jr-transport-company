@@ -348,12 +348,6 @@ const Services = () => {
       features: ["Port-to-door delivery", "800+ owned & attached vehicles", "24x7 control room", "Digital POD delivery"]
     },
     {
-      icon: <FaWarehouse />,
-      title: "Bulk Cargo Movement",
-      desc: "Comprehensive bulk cargo transportation solutions for raw materials, finished goods, and industrial commodities.",
-      features: ["Coverage in 28 states & 7 UTs", "Specialized bulk carriers", "Weather-proof handling", "End-to-end logistics"]
-    },
-    {
       icon: <FaBuilding />,
       title: "Industrial Project Cargo Logistics",
       desc: "Complete turnkey logistics solutions for industrial projects including power plants, refineries, and infrastructure projects.",

@@ -15,11 +15,7 @@
 .milestones-header h2 {
   font-size: 3rem;
   font-weight: 800;
-  background: linear-gradient(135deg, red, white);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  color: #ff0000;
 }
 
 .milestones-header p {
@@ -99,14 +95,13 @@
   fill: red !important;
 }
 
-.timeline-card h4 {
+.timeline-card h5 {
   color: red;
   font-size: 2.2rem;
   margin-bottom: 8px;
 }
 
 .timeline-card h5 {
-  color: #fff;
   margin: 10px 0;
   font-size: 1.4rem;
 }
@@ -246,7 +241,7 @@
     font-size: 2.2rem;
   }
   
-  .timeline-card h4 {
+  .timeline-card h5 {
     font-size: 1.8rem;
   }
   
