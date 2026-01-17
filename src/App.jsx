@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Milestones from './sections/Milestones'
 import Solutions from './sections/Solutions'
@@ -10,6 +11,18 @@ import HeroEnquirySplit from './sections/HeroEnquirySplit'
 // Remove About import since it's now a separate page
 
 function App() {
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const id = hash.substring(1);
+      const section = document.getElementById(id);
+      if (section) {
+        const offset = 100; // navbar height
+        const y = section.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+  }, []);
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
       <Navbar />

@@ -51,9 +51,9 @@ a {
   padding: 0 clamp(15px, 3vw, 20px);
 }
 
-section {
+/* section {
   padding: clamp(60px, 10vw, 120px) 0;
-}
+} */
 /* ===== NAVBAR STYLES ===== */
 .navbar {
   position: fixed;

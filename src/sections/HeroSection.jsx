@@ -4,9 +4,9 @@ import { CheckCircle, Package, Truck, ShieldCheck } from "lucide-react";
 const HeroSection = () => {
   return (
     <div className="hero-left">
-      <h1 style={{ color: '#dc2626', fontSize: '2.5rem', fontWeight: 'bold' }}>
+      <h3 style={{ color: '#dc2626', fontSize: '2.5rem', fontWeight: 'bold' }}>
         India's Most Trusted Heavy Transport Partner
-      </h1>
+      </h3>
       
       <div style={{ marginTop: '2rem' }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '1.5rem' }}>

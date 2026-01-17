@@ -60,6 +60,11 @@
     object-fit: contain !important;
 }
 
+/* .slide-image-narrow {
+    width: 80% !important;
+    margin: 0 auto;
+} */
+
 .image-overlay {
     position: absolute;
     top: 0;
@@ -141,7 +146,7 @@
 .stat-card {
     text-align: center;
     padding: 30px 20px;
-    background: #f7fafc;
+    background: black;
     border-radius: 10px;
     border: 2px solid #e2e8f0;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -149,18 +154,22 @@
 
 .stat-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
 }
 
 .stat-card h3 {
     font-size: 2.5rem;
-    color: #2b6cb0;
+    color: red;
     margin-bottom: 10px;
     font-weight: 700;
 }
 
+.stat-card h3.small-text {
+    font-size: 2.0rem;
+}
+
 .stat-card p {
-    color: #4a5568;
+    color: white;
     font-size: 1rem;
     font-weight: 500;
 }
@@ -169,10 +178,14 @@
 .about-cta {
     text-align: center;
     padding: 50px 20px;
-    background: linear-gradient(135deg, #1a365d 0%, #2b6cb0 100%);
+    background: black;
     color: white;
     border-radius: 12px;
     margin: 60px 0;
+}
+
+.about-cta h2 {
+    color: red;
 }
 
 .about-cta h2 {

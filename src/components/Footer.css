@@ -1,3 +1,5 @@
+/* Footer.css */
+
 /* Footer Container */
 .footer {
   background: black;
@@ -15,26 +17,36 @@
   margin-bottom: clamp(50px, 8vw, 80px);
 }
 
-/* Left Section */
-.footer-logo-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 25px;
+/* Left Section - UPDATED: Logo above title */
+.footer-logo-container {
+  text-align: center;
+  margin-bottom: 15px;
 }
 
-.footer-logo {
-  height: clamp(2rem, 4vw, 3rem);
+.footer-logo-title-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.footer-logo-title-row .footer-title {
+  margin: 0;
+  text-align: left;
+}
+
+.footer-logo-small {
+  height: clamp(2.5rem, 5vw, 3.5rem);
   width: auto;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .footer-title {
-  font-size: clamp(1.2rem, 2.5vw, 1.5rem);
   font-weight: 700;
-  margin: 0;
+  margin: 0 0 20px 0;
   color: #FF0000;
+  text-align: center;
 }
 
 .footer-description {
@@ -223,34 +235,55 @@
   text-decoration: none;
 }
 
-/* Copyright */
+.footer-compliance-item {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.verified-icon {
+  color: #4CAF50;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+/* Copyright - UPDATED: Logo above text */
 .footer-copyright {
   text-align: center;
   padding-top: clamp(30px, 5vw, 40px);
   border-top: 1px solid rgba(255,255,255,0.1);
   font-size: clamp(0.9rem, 2vw, 1rem);
   opacity: 0.8;
+  width: 100%;
 }
 
-.footer-logo-small {
-  height: 1.5rem;
-  width: 2rem;
+.footer-copyright-logo {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.footer-copyright-logo img {
+  height: clamp(1.8rem, 4vw, 2.5rem);
+  width: auto;
   border-radius: 50%;
   object-fit: cover;
-  margin-left: 0;
+  margin: 0 auto;
+  display: block;
 }
 
-.footer-logo-centered {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
+.footer-copyright-text {
+  line-height: 1.6;
 }
 
+/* Remove old classes that are no longer used */
+.footer-logo-section,
+.footer-logo,
+.footer-logo-centered,
 .footer-logo-name {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+  display: none;
 }
 
 /* Mobile Responsive Styles */
@@ -266,13 +299,17 @@
     margin-bottom: 40px;
   }
 
-  .footer-logo-section {
-    text-align: center;
-    margin-bottom: 20px;
+  .footer-logo-container {
+    margin-bottom: 10px;
+  }
+
+  .footer-logo-small {
+    height: 2.2rem;
   }
 
   .footer-title {
     font-size: 1.2rem;
+    margin-bottom: 15px;
   }
 
   .footer-description {
@@ -356,13 +393,7 @@
     font-size: 0.85rem;
   }
 
-  .footer-logo-small {
-    height: 1.2rem;
-    width: 1.5rem;
-    margin-left: 0;
-  }
-
-  .footer-logo-centered {
-    margin-bottom: 5px;
+  .footer-copyright-logo img {
+    height: 1.5rem;
   }
 }

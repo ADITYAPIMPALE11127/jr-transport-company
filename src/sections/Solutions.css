@@ -15,9 +15,7 @@
 .solutions-title {
   font-size: 2.5rem;
   font-weight: 700;
-  background: linear-gradient(135deg, #1e293b 0%, #dc2626 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #dc2626;
   margin-bottom: 0.75rem;
   letter-spacing: -0.5px;
 }
@@ -65,8 +63,11 @@
   border-radius: 20px;
   padding: 2px;
   background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(220, 38, 38, 0));
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;

@@ -1,147 +1,132 @@
-/* =========================
-   SECTION
-========================= */
+/* Clients.css */
+
 .clients-section {
-  background: #0b0b0b;
-  padding: clamp(70px, 8vw, 120px) 0;
-  color: #fff;
-  overflow: hidden;
+  padding: 4rem 2rem;
+  background-color: #f8f9fa;
 }
 
 .clients-container {
-  max-width: 1400px;
-  margin: auto;
-  padding: 0 24px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-/* =========================
-   HEADER
-========================= */
 .clients-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 3rem;
 }
 
 .clients-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: 2.5rem;
   font-weight: 700;
-  margin-bottom: 12px;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
 }
 
 .clients-subtitle {
-  font-size: 1rem;
-  color: #bdbdbd;
+  font-size: 1.1rem;
+  color: #666;
   max-width: 700px;
-  margin: auto;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
-/* =========================
-   MARQUEE CONTAINER
-========================= */
 .clients-marquee-container {
-  position: relative;
-  width: 100%;
   overflow: hidden;
-  margin: 28px 0;
+  position: relative;
+  margin: 2rem 0;
 }
 
-/* =========================
-   MARQUEE ROW
-========================= */
 .marquee {
   display: flex;
-  width: fit-content;
-  gap: 22px;
+  gap: 4rem;
+  padding: 1rem 0;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
-/* Left ➜ Right */
 .marquee-ltr {
-  animation: marquee-ltr 120s linear infinite;
+  animation-name: marqueeLeftToRight;
+  animation-duration: 40s;
 }
 
-/* Right ➜ Left */
 .marquee-rtl {
-  animation: marquee-rtl 120s linear infinite;
+  animation-name: marqueeRightToLeft;
+  animation-duration: 40s;
 }
 
-/* =========================
-   CLIENT CARD
-========================= */
-.client-logo {
-  min-width: 280px;
-  max-width: 280px;
-  height: 78px;
-  background: #121212;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 18px;
-  box-shadow:
-    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
-    0 8px 22px rgba(0, 0, 0, 0.45);
-  flex-shrink: 0;
+.client-logo-image {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
 }
 
-/* Text */
-.client-logo span {
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-align: center;
-  color: #e0e0e0;
-  line-height: 1.3;
+.client-logo-image:hover {
+  filter: grayscale(0%);
+  opacity: 1;
 }
 
-/* =========================
-   COLOR ACCENTS
-========================= */
-.client-logo[data-color="color-1"]  { border-left: 4px solid #4fc3f7; }
-.client-logo[data-color="color-2"]  { border-left: 4px solid #81c784; }
-.client-logo[data-color="color-3"]  { border-left: 4px solid #ffb74d; }
-.client-logo[data-color="color-4"]  { border-left: 4px solid #ba68c8; }
-.client-logo[data-color="color-5"]  { border-left: 4px solid #e57373; }
-.client-logo[data-color="color-6"]  { border-left: 4px solid #64b5f6; }
-.client-logo[data-color="color-7"]  { border-left: 4px solid #aed581; }
-.client-logo[data-color="color-8"]  { border-left: 4px solid #ffd54f; }
-.client-logo[data-color="color-9"]  { border-left: 4px solid #90a4ae; }
-.client-logo[data-color="color-10"] { border-left: 4px solid #f06292; }
-.client-logo[data-color="color-11"] { border-left: 4px solid #4db6ac; }
-
-/* =========================
-   KEYFRAMES
-========================= */
-@keyframes marquee-ltr {
-  from {
-    transform: translateX(-50%);
+/* Marquee animations */
+@keyframes marqueeLeftToRight {
+  0% {
+    transform: translateX(0);
   }
-  to {
-    transform: translateX(0%);
-  }
-}
-
-@keyframes marquee-rtl {
-  from {
-    transform: translateX(0%);
-  }
-  to {
+  100% {
     transform: translateX(-50%);
   }
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+@keyframes marqueeRightToLeft {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
-  .client-logo {
-    min-width: 240px;
-    max-width: 240px;
-    height: 70px;
+  .clients-section {
+    padding: 3rem 1rem;
   }
-
+  
+  .clients-title {
+    font-size: 2rem;
+  }
+  
+  .clients-subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .client-logo-image {
+    height: 50px;
+  }
+  
+  .marquee {
+    gap: 3rem;
+  }
+  
   .marquee-ltr,
   .marquee-rtl {
-    animation-duration: 50s;
+    animation-duration: 30s;
+  }
+}
+
+@media (max-width: 480px) {
+  .client-logo-image {
+    height: 40px;
+  }
+  
+  .marquee {
+    gap: 2.5rem;
+  }
+  
+  .marquee-ltr,
+  .marquee-rtl {
+    animation-duration: 25s;
   }
 }

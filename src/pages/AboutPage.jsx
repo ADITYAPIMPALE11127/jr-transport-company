@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -15,6 +15,14 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import './AboutPage.css'
 
 const AboutPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const navigateToSection = (id) => {
+    window.location.href = `/#${id}`;
+  };
+
   const slidesData = [
     {
       id: 1,
@@ -25,7 +33,7 @@ const AboutPage = () => {
         { name: "Mr. Kadar Vali Kokane", image: "/assets/co-fon-2.jpeg",designation:'Managing Director' }
       ],
       content: [
-        "Founded in 2020 (Registered under MSME – UDYAM-MH-2020xxxx)",
+        "Founded in 2020 (Registered under MSME – UDYAM-MH-26-0208706",
         "Started operations in 2019 with 20+ years of legacy experience",
         "Professional, relationship-driven approach with PAN India reach",
         "Head Office: Akurdi, Pune | Hubs: Chakan & Bhosari"
@@ -150,7 +158,7 @@ const AboutPage = () => {
                         <img
                           src={slide.image}
                           alt={slide.title}
-                          className={`slide-image ${slide.id === 4 ? 'slide-image-contain' : ''}`}
+                          className={`slide-image ${slide.id === 4 ? 'slide-image-contain' : ''} ${slide.id === 6 ? 'slide-image-narrow' : ''}`}
                           onError={(e) => {
                             e.target.src = '/assets/placeholder-transport.jpg'
                           }}
@@ -197,15 +205,15 @@ const AboutPage = () => {
             <p>Years of Legacy</p>
           </div>
           <div className="stat-card">
-            <h3>100T</h3>
+            <h3>130T</h3>
             <p>Load Capacity</p>
           </div>
           <div className="stat-card">
             <h3>150+</h3>
-            <p>Vehicle Network</p>
+            <p>Client Network</p>
           </div>
           <div className="stat-card">
-            <h3>PAN India</h3>
+            <h3 className="small-text">PAN India</h3>
             <p>Operations</p>
           </div>
           <div className="stat-card">
@@ -217,19 +225,16 @@ const AboutPage = () => {
         {/* CTA Section */}
         <div className="about-cta">
           <h2>Need to Transport Heavy Industrial Equipment?</h2>
-          <p>Get a personalized quote from our heavy transport experts. We handle everything from sugar plant machinery to power generators.</p>
+          <p>Get a personalized quote from our heavy transport experts.</p>
           <div className="cta-buttons">
-            <Link to="/#footer" className="btn-primary">
-              <span className="phone-icon">📞</span> Emergency: +91 9766958932
-            </Link>
-            <Link to="/#services" className="btn-secondary">
+            <button onClick={() => navigateToSection('services')} className="btn-secondary">
               View Our Services
-            </Link>
-            <Link to="/#clients" className="btn-secondary">
+            </button>
+            <button onClick={() => navigateToSection('clients')} className="btn-secondary">
               Our Clients
-            </Link>
+            </button>
           </div>
-          <p className="cta-note">Office: 9 AM – 7 PM | Transport Operations: 24/7</p>
+          <p className="cta-note" style={{transform: 'translateY(10px)'}}>Office: 9 AM – 7 PM | Transport Operations: 24/7</p>
         </div>
       </div>
 

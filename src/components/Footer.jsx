@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaPhone, FaCopy } from "react-icons/fa";
 import SocialLinks from "./SocialLinks";
 import "./Footer.css";
+import { Translate } from "@mui/icons-material";
 
 const Footer = () => {
   const [copied, setCopied] = useState("");
@@ -18,15 +19,13 @@ const Footer = () => {
     setTimeout(() => setCopied(""), 2000);
   };
 
-
-
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer-grid">
           {/* ---------------- LEFT SECTION ---------------- */}
           <div>
-            <div className="footer-logo-section">
+            <div className="footer-logo-title-row">
               <img
                 src="/assets/company-logo.png"
                 alt="JR Transport Company Logo"
@@ -36,6 +35,7 @@ const Footer = () => {
                 JR Transport Company
               </h3>
             </div>
+            
             <p className="footer-description">
               India's trusted partner for heavy & over-dimensional cargo
               transportation since 2020.
@@ -182,46 +182,32 @@ const Footer = () => {
               Legal
             </h3>
             <ul className="footer-legal-list">
-              <li>
-                <a href="#" className="footer-legal-link">
-                  Terms & Conditions (National Courier)
-                </a>
+              <li className="footer-compliance-item">
+                <span className="verified-icon" style={{transform: 'translateY(-18px)'}}>✓</span>
+                Business Compliance Registered<br />
+                MSME: UDYAM-MH-26-0208706
               </li>
-              <li>
-                <a href="#" className="footer-legal-link">
-                  Terms & Conditions (Intracity)
-                </a>
-              </li>
-              <li>
-                <a href="#" className="footer-legal-link">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="footer-legal-link">
-                  Cookie Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="footer-legal-link">
-                  Disclaimer
-                </a>
+              <li className="footer-compliance-item">
+                <span className="verified-icon">✓</span>
+                GST Registered: 27AARFJ7412Q1ZJ
               </li>
             </ul>
           </div>
         </div>
+      </div>
 
-        {/* COPYRIGHT */}
-        <div className="footer-copyright">
-          <div className="footer-logo-name">
-            <img
-              src="/assets/company-logo.png"
-              alt="JR Transport Company Logo"
-              className="footer-logo-small"
-            />
-            <span>JR Transport Company</span>
-          </div>
-        © 2025 JR Transport Company – All Rights Reserved.
+      {/* COPYRIGHT */}
+      <div className="footer-copyright">
+        <div className="footer-copyright-logo">
+          <img
+            src="/assets/company-logo.png"
+            alt="JR Transport Company Logo"
+          />
+        </div>
+        <div className="footer-copyright-text">
+          JR Transport Company
+          <br />
+          © 2025 JR Transport Company – All Rights Reserved.
         </div>
       </div>
     </footer>
