@@ -2,13 +2,135 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    
+    <!-- Multiple favicon options for different browsers -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <!-- Remove /public from path - Vite serves from public/ automatically -->
+    <link rel="icon" type="image/svg+xml" href="/vite.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>jr-transport-company</title>
+    <title>JR Transport Company - Heavy Cargo Transportation</title>
+    <meta name="description" content="India's trusted partner for heavy & over-dimensional cargo transportation since 2020.">
+    
+    <!-- Prevent about: protocol errors and handle favicon loading -->
+    <script>
+      // Document start - early error handling
+      (function() {
+        // Redirect if somehow on about: protocol
+        if (window.location.protocol === 'about:') {
+          window.location.replace('/');
+        }
+        
+        // Create a backup favicon if main one fails
+        document.addEventListener('DOMContentLoaded', function() {
+          const favicon = document.querySelector('link[rel="icon"][type="image/x-icon"]');
+          if (favicon) {
+            favicon.onerror = function() {
+              // Create a data URL favicon as fallback
+              const canvas = document.createElement('canvas');
+              canvas.width = 16;
+              canvas.height = 16;
+              const ctx = canvas.getContext('2d');
+              ctx.fillStyle = '#FF0000';
+              ctx.fillRect(0, 0, 16, 16);
+              ctx.fillStyle = '#FFFFFF';
+              ctx.font = '10px Arial';
+              ctx.fillText('JR', 2, 12);
+              
+              const fallbackLink = document.createElement('link');
+              fallbackLink.rel = 'icon';
+              fallbackLink.href = canvas.toDataURL();
+              document.head.appendChild(fallbackLink);
+              
+              // Remove the broken link
+              favicon.remove();
+            };
+          }
+        });
+        
+        // Intercept and suppress about: errors
+        const originalAddEventListener = window.addEventListener;
+        window.addEventListener = function(type, listener, options) {
+          if (type === 'error') {
+            const wrappedListener = function(event) {
+              // Check if error is about about: protocol
+              if (event.message && event.message.includes('about:')) {
+                return; // Suppress the error
+              }
+              if (event.filename && event.filename.startsWith('about:')) {
+                return; // Suppress the error
+              }
+              if (event.target && event.target.src && event.target.src.startsWith('about:')) {
+                event.preventDefault();
+                return false; // Stop propagation
+              }
+              return listener.apply(this, arguments);
+            };
+            return originalAddEventListener.call(this, type, wrappedListener, options);
+          }
+          return originalAddEventListener.apply(this, arguments);
+        };
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    
+    <!-- Post-load error handling -->
+    <script>
+      // Listen for resource errors after page loads
+      window.addEventListener('load', function() {
+        // Error event listener for resources
+        document.addEventListener('error', function(e) {
+          const target = e.target;
+          
+          // Suppress about: errors
+          if (target.src && target.src.startsWith('about:')) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+          }
+          
+          // Log other errors but don't break
+          if (target.tagName === 'IMG' || target.tagName === 'LINK' || target.tagName === 'SCRIPT') {
+            console.warn('Resource failed to load (non-critical):', target.src || target.href);
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        }, true); // Use capture phase
+        
+        // Override console.error to filter out about: messages
+        if (window.console && console.error) {
+          const originalError = console.error;
+          console.error = function() {
+            const args = Array.from(arguments);
+            // Check if any argument contains 'about:'
+            const hasAboutError = args.some(arg => 
+              typeof arg === 'string' && arg.includes('about:')
+            );
+            
+            if (!hasAboutError) {
+              originalError.apply(console, args);
+            }
+            // If it's an about: error, silently ignore it
+          };
+        }
+      }, false);
+    </script>
+    
+    <!-- Fallback for React if it fails to load -->
+    <noscript>
+      <div style="padding: 20px; text-align: center; background: #f8f9fa; color: #333;">
+        <h2>JavaScript Required</h2>
+        <p>This website requires JavaScript to function properly. Please enable JavaScript in your browser settings.</p>
+        <p>You can contact us at: <strong>jrtransportco@yahoo.com</strong></p>
+        <p>Or call: <strong>+91 97669 58932</strong></p>
+      </div>
+    </noscript>
   </body>
 </html>
