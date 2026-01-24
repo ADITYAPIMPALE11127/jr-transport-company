@@ -1,26 +1,18 @@
 import React, { useState } from "react";
-import { FaPhone, FaCopy } from "react-icons/fa";
+import { FaPhone } from "react-icons/fa";
 import SocialLinks from "./SocialLinks";
+import PhoneModal from "./PhoneModal";
 import "./Footer.css";
 import { Translate } from "@mui/icons-material";
 
 const Footer = () => {
-  const [copied, setCopied] = useState("");
-  const [showPhoneDropdown, setShowPhoneDropdown] = useState(false);
+  const [showPhoneModal, setShowPhoneModal] = useState(false);
 
-  const phone1 = "+919766958932";
-  const phone2 = "+919890371038";
   const whatsappNumber = "919766958932";
   const email = "jrtransportco@yahoo.com";
 
-  const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text);
-    setCopied(text);
-    setTimeout(() => setCopied(""), 2000);
-  };
-
   return (
-    <footer className="footer">
+    <footer id="footer" className="footer">
       <div className="container">
         <div className="footer-grid">
           {/* ---------------- LEFT SECTION ---------------- */}
@@ -94,53 +86,11 @@ const Footer = () => {
             <div className="footer-call-container">
               <button
                 className="footer-call-btn"
-                onClick={() => setShowPhoneDropdown(!showPhoneDropdown)}
-                onMouseEnter={() =>
-                  window.innerWidth > 768 && setShowPhoneDropdown(true)
-                }
+                onClick={() => setShowPhoneModal(true)}
               >
                 <FaPhone /> Call
                 Now
               </button>
-
-              {showPhoneDropdown && (
-                <div
-                  className="footer-phone-dropdown"
-                  onMouseLeave={() => setShowPhoneDropdown(false)}
-                >
-                  <div
-                    className={`footer-dropdown-item ${copied === phone1 ? "copied" : ""}`}
-                    onClick={() => copyToClipboard(phone1)}
-                  >
-                    <a
-                      href={`tel:${phone1}`}
-                      className="footer-dropdown-link"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {phone1}
-                    </a>
-                    <span className={`footer-copy-indicator ${copied === phone1 ? "copied" : ""}`}>
-                      {copied === phone1 ? "Copied!" : <><FaCopy /> Copy</>}
-                    </span>
-                  </div>
-
-                  <div
-                    className={`footer-dropdown-item ${copied === phone2 ? "copied" : ""}`}
-                    onClick={() => copyToClipboard(phone2)}
-                  >
-                    <a
-                      href={`tel:${phone2}`}
-                      className="footer-dropdown-link"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {phone2}
-                    </a>
-                    <span className={`footer-copy-indicator ${copied === phone2 ? "copied" : ""}`}>
-                      {copied === phone2 ? "Copied!" : <><FaCopy /> Copy</>}
-                    </span>
-                  </div>
-                </div>
-              )}
             </div>
 
             {/* SOCIAL + EMAIL + CALL */}
@@ -165,12 +115,6 @@ const Footer = () => {
                   className="footer-email-link-alt"
                 >
                   Send Email
-                </a>
-                <a
-                  href={`tel:${phone1}`}
-                  className="footer-call-link"
-                >
-                  Call Now
                 </a>
               </div>
             </div>
@@ -210,6 +154,12 @@ const Footer = () => {
           © 2025 JR Transport Company – All Rights Reserved.
         </div>
       </div>
+
+      {/* PHONE MODAL */}
+      <PhoneModal
+        isOpen={showPhoneModal}
+        onClose={() => setShowPhoneModal(false)}
+      />
     </footer>
   );
 };

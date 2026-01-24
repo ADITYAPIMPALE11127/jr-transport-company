@@ -1,0 +1,203 @@
+.phone-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.phone-modal-content {
+  background: white;
+  border-radius: 12px;
+  padding: 0;
+  max-width: 400px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease-out;
+}
+
+.phone-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid #eee;
+  background: linear-gradient(135deg, #FF0000, #FF6666);
+  color: white;
+  border-radius: 12px 12px 0 0;
+}
+
+.phone-modal-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.phone-modal-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.phone-modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.phone-modal-body {
+  padding: 24px;
+}
+
+.phone-modal-subtitle {
+  margin: 0 0 20px 0;
+  color: #666;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.phone-numbers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.phone-number-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+  transition: all 0.2s;
+}
+
+.phone-number-item:hover {
+  background: #e9ecef;
+  border-color: #dee2e6;
+}
+
+.phone-number-link {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  flex: 1;
+  margin-right: 12px;
+}
+
+.phone-number-link:hover {
+  color: #FF3333;
+}
+
+.phone-copy-btn {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.phone-copy-btn:hover:not(.copied) {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+.phone-copy-btn.copied {
+  background: #28a745;
+  color: white;
+}
+
+.phone-modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid #eee;
+  text-align: center;
+  background: #f8f9fa;
+  border-radius: 0 0 12px 12px;
+}
+
+.phone-modal-close-btn {
+  background: #6c757d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.phone-modal-close-btn:hover {
+  background: #5a6268;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .phone-modal-content {
+    width: 95%;
+    margin: 20px;
+  }
+
+  .phone-modal-header {
+    padding: 16px 20px;
+  }
+
+  .phone-modal-body {
+    padding: 20px;
+  }
+
+  .phone-modal-footer {
+    padding: 12px 20px;
+  }
+
+  .phone-number-item {
+    padding: 10px 12px;
+  }
+
+  .phone-number-link {
+    font-size: 0.9rem;
+  }
+}

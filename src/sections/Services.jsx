@@ -22,7 +22,6 @@ import { styled, alpha } from '@mui/material/styles';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 
-// Lighter overlay to show the background image
 const BackgroundOverlay = styled(Box)(({ theme }) => ({
   position: 'absolute',
   top: 0,
@@ -37,7 +36,6 @@ const BackgroundOverlay = styled(Box)(({ theme }) => ({
   zIndex: 1,
 }));
 
-// Main container with background image - LIGHTER overlay
 const ServicesContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   padding: theme.spacing(16, 12),
@@ -50,7 +48,6 @@ const ServicesContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   
-  // Lighter gradient overlay to show background image
   '&::before': {
     content: '""',
     position: 'absolute',
@@ -80,13 +77,11 @@ const ServicesContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-// Content container with proper z-index
 const ContentContainer = styled(Container)(({ theme }) => ({
   position: 'relative',
   zIndex: 3,
 }));
 
-// Scroll container with buttons absolutely positioned outside
 const ScrollContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
   width: '100%',
@@ -191,7 +186,6 @@ const ServiceCard = styled(Card)(({ theme }) => ({
   },
 }));
 
-// Gradient overlay for the top part of the card
 const CardTopGradient = styled(Box)(({ theme }) => ({
   position: 'absolute',
   top: 0,
@@ -206,7 +200,6 @@ const CardTopGradient = styled(Box)(({ theme }) => ({
   zIndex: 1,
 }));
 
-// Buttons positioned COMPLETELY outside the scroll area
 const ScrollButton = styled(IconButton)(({ theme, side }) => ({
   position: 'absolute',
   top: '50%',
@@ -220,7 +213,6 @@ const ScrollButton = styled(IconButton)(({ theme, side }) => ({
   transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
   
-  // Position buttons outside the scroll container
   left: side === 'left' ? theme.spacing(2) : 'auto',
   right: side === 'right' ? theme.spacing(2) : 'auto',
   
@@ -379,7 +371,6 @@ const Services = () => {
     }
   };
 
-  // Initial button visibility check
   useEffect(() => {
     checkScrollButtons();
     window.addEventListener('resize', checkScrollButtons);
@@ -390,21 +381,10 @@ const Services = () => {
   }, []);
 
   return (
-    <Box
-      id="services"
-      sx={{
-        position: 'relative',
-        overflow: 'hidden',
-      }}
-    >
-      {/* Services Container with background image - NOW VISIBLE */}
+    <section id="services" style={{ position: 'relative', overflow: 'hidden' }}>
       <ServicesContainer>
-        {/* Lighter Background Overlay - allows background image to show through */}
         <BackgroundOverlay />
-        
-        {/* Content Container */}
         <ContentContainer maxWidth="xl">
-          {/* Header */}
           <Box sx={{ textAlign: 'center', mb: { xs: 1, md: 1, lg: 1 } }}>
             <Typography
               variant="h1"
@@ -453,9 +433,7 @@ const Services = () => {
             </Typography>
           </Box>
 
-          {/* Services Container with separate button areas */}
           <Box sx={{ position: 'relative' }}>
-            {/* Left Scroll Button - COMPLETELY SEPARATE from cards */}
             {showLeftButton && !isMobile && (
               <ScrollButton
                 side="left"
@@ -466,7 +444,6 @@ const Services = () => {
               </ScrollButton>
             )}
 
-            {/* Scroll Container (cards only) */}
             <ScrollContainer>
               <ServicesScroll 
                 ref={scrollRef} 
@@ -474,15 +451,12 @@ const Services = () => {
               >
                 {services.map((service, index) => (
                   <ServiceCard key={index} elevation={3}>
-                    {/* Black gradient overlay for top part */}
                     <CardTopGradient />
-                    
-                    {/* Icon Header */}
                     <IconContainer>
                       <Box
                         className="service-icon"
                         sx={{
-                          color: '#d32f2f', // Red icons
+                          color: '#d32f2f',
                           fontSize: { xs: '3rem', md: '4rem' },
                           transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.4)',
                           position: 'relative',
@@ -493,7 +467,6 @@ const Services = () => {
                       </Box>
                     </IconContainer>
 
-                    {/* Content - WHITE background */}
                     <CardContent
                       sx={{
                         height: 'calc(100% - 140px)',
@@ -503,17 +476,14 @@ const Services = () => {
                         background: 'white',
                         position: 'relative',
                         zIndex: 2,
-
                         [theme.breakpoints.down('md')]: {
                           height: 'calc(100% - 120px)',
                           p: 2,
                         },
-
                         [theme.breakpoints.down('sm')]: {
                           height: 'calc(100% - 100px)',
                           p: 1.5,
                         },
-
                         [theme.breakpoints.down('xs')]: {
                           height: 'calc(100% - 90px)',
                           p: 1,
@@ -587,7 +557,6 @@ const Services = () => {
               </ServicesScroll>
             </ScrollContainer>
 
-            {/* Right Scroll Button - COMPLETELY SEPARATE from cards */}
             {showRightButton && !isMobile && (
               <ScrollButton
                 side="right"
@@ -598,7 +567,6 @@ const Services = () => {
               </ScrollButton>
             )}
 
-            {/* Scroll Indicator for Mobile */}
             {isMobile && (
               <Box sx={{ textAlign: 'center', mt: 4 }}>
                 <Box
@@ -637,7 +605,7 @@ const Services = () => {
           </Box>
         </ContentContainer>
       </ServicesContainer>
-    </Box>
+    </section>
   );
 };
 

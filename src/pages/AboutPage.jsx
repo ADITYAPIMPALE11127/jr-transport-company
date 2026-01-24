@@ -1,27 +1,21 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
-// Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import 'swiper/css/autoplay'
-// Import required modules
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import './AboutPage.css'
 
 const AboutPage = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const navigateToSection = (id) => {
-    window.location.href = `/#${id}`;
-  };
 
   const slidesData = [
     {
@@ -69,7 +63,7 @@ const AboutPage = () => {
       image: "/assets/hero-bg-6.jpeg",
       content: [
         "Sugar Equipment & Distillery Plants",
-        "Boilers & Heat Exchangers",
+        "Boilers & Heat Exchanges",
         "Power Energy & Generators",
         "Automobile OEM & Components",
         "Food, Pharma & Chemical Plants",
@@ -105,14 +99,20 @@ const AboutPage = () => {
     }
   ]
 
+  const handleNavigation = (sectionId) => {
+    console.log(`Navigating to: ${sectionId}`);
+    navigate('/', { 
+      state: { scrollTo: sectionId }
+    });
+  };
+
   return (
     <div className="about-page">
       <Navbar />
       
-<div style={{marginTop:100}}></div>
+      <div style={{marginTop:100}}></div>
 
       <div className="container">
-        {/* Main Slideshow Section */}
         <div className="slideshow-section">
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
@@ -127,7 +127,6 @@ const AboutPage = () => {
             {slidesData.map((slide) => (
               <SwiperSlide key={slide.id}>
                 <div className="slide-content">
-                  {/* Left Side - Image/Founders Display */}
                   <div className="slide-image-container">
                     {slide.isFounderSlide ? (
                       <div className="founders-left-container">
@@ -168,7 +167,6 @@ const AboutPage = () => {
                     )}
                   </div>
 
-                  {/* Right Side - Content */}
                   <div className="slide-text">
                     <h2>{slide.title}</h2>
                     <ul className="slide-list">
@@ -177,7 +175,6 @@ const AboutPage = () => {
                       ))}
                     </ul>
                     
-                    {/* Special content for non-founder slides */}
                     {!slide.isFounderSlide && slide.id === 3 && (
                       <div className="fleet-highlight">
                         <p><strong>Fleet Types:</strong> LPT Trucks • Pickup Vehicles • JCB Trucks • Trailers • Puller Vehicles</p>
@@ -186,9 +183,12 @@ const AboutPage = () => {
                     
                     {!slide.isFounderSlide && slide.id === 6 && (
                       <div className="contact-actions">
-                        <Link to="/#footer" className="contact-btn">
+                        <button 
+                          onClick={() => handleNavigation('footer')}
+                          className="contact-btn"
+                        >
                           Get Instant Quote
-                        </Link>
+                        </button>
                       </div>
                     )}
                   </div>
@@ -198,7 +198,6 @@ const AboutPage = () => {
           </Swiper>
         </div>
 
-        {/* Quick Stats Section */}
         <div className="quick-stats">
           <div className="stat-card">
             <h3>20+</h3>
@@ -222,19 +221,26 @@ const AboutPage = () => {
           </div>
         </div>
 
-        {/* CTA Section */}
         <div className="about-cta">
           <h2>Need to Transport Heavy Industrial Equipment?</h2>
           <p>Get a personalized quote from our heavy transport experts.</p>
           <div className="cta-buttons">
-            <button onClick={() => navigateToSection('services')} className="btn-secondary">
+            <button 
+              onClick={() => handleNavigation('services-section')}
+              className="btn-secondary"
+            >
               View Our Services
             </button>
-            <button onClick={() => navigateToSection('clients')} className="btn-secondary">
+            <button 
+              onClick={() => handleNavigation('clients-section')}
+              className="btn-secondary"
+            >
               Our Clients
             </button>
           </div>
-          <p className="cta-note" style={{transform: 'translateY(10px)'}}>Office: 9 AM – 7 PM | Transport Operations: 24/7</p>
+          <p className="cta-note" style={{transform: 'translateY(10px)'}}>
+            Office: 9 AM – 7 PM | Transport Operations: 24/7
+          </p>
         </div>
       </div>
 

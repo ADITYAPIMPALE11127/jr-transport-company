@@ -25,7 +25,7 @@ const Solutions = () => {
     },
  
     {
-      image: "/assets/hero-bg-4.jpg",
+      image: "/assets/hero-bg-9.jpg.jpeg",
       title: "Over-Weight Consignments",
       desc: "Hydraulic axle trailers & specialized equipment for super heavy lifts up to 150 MT single unit"
     },
