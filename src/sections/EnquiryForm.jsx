@@ -160,7 +160,7 @@ const EnquiryForm = () => {
       <Paper
         elevation={3}
         sx={{
-          p: 3,
+          p: 2,
           borderRadius: 3,
           backgroundColor: 'rgba(255, 255, 255, 0.95)',
           backdropFilter: 'blur(10px)',
@@ -172,7 +172,7 @@ const EnquiryForm = () => {
         </Typography>
 
         <Box component="form" onSubmit={handleSubmit} noValidate className="enquiry-form">
-          <Grid container spacing={2}>
+          <Grid container spacing={1}>
             <Grid item xs={12}>
               <input
                 type="text"
@@ -266,7 +266,7 @@ const EnquiryForm = () => {
                 onChange={handleChange}
                 disabled={loading}
                 required
-                rows={4}
+                rows={3}
                 style={{
                   width: '100%',
                   padding: '16px',
@@ -276,7 +276,7 @@ const EnquiryForm = () => {
                   transition: '0.3s',
                   boxSizing: 'border-box',
                   resize: 'vertical',
-                  minHeight: '120px',
+                  minHeight: '80px',
                 }}
               />
               {errors.message && <div className="error">{errors.message}</div>}
