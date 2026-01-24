@@ -9,8 +9,9 @@ const Clients = () => {
     "/assets/client-logo/hw-cranes.jpeg",
     "/assets/client-logo/inox-air.jpeg",
     "/assets/client-logo/orange-machinetech.jpeg",
-    "/assets/client-logo/padmatech.jpeg",
-    "/assets/client-logo/gardner-denver.svg"
+
+    "/assets/client-logo/gardner-denver.svg",
+    "assets/client-logo/images.png"
   ]
   const clientList2 = [
     "/assets/client-logo/Potain.jpeg",
@@ -21,7 +22,8 @@ const Clients = () => {
     "/assets/client-logo/surya-group.jpeg",
     "/assets/client-logo/unitherm.jpeg",
     "assets/client-logo/Klaus-world.jpeg",
-    "assets/client-logo/images.jfif"
+    "/assets/client-logo/padmatech.jpeg",
+
   ]
 
   const marqueeClients1 = [...clientsList1, ...clientsList1]
