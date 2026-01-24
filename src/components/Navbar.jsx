@@ -40,9 +40,14 @@ const Navbar = () => {
     { label: 'Home', id: 'hero-section', path: '/', type: 'home' },
     { label: 'About', id: 'about', path: '/about', type: 'page' },
     { label: 'Services', id: 'services', path: '/#services', type: 'section' },
-    { label: 'Clients', id: 'clients', path: '/#clients', type: 'section' },
+    { label: 'Clients', id: 'clients-section', path: '/#clients-section', type: 'section' },
     { label: 'Contact', id: 'footer', path: '/#footer', type: 'section' },
   ]
+
+  const handleHomeClick = (e) => {
+    e.preventDefault()
+    window.location.href = '/'
+  }
 
   return (
     <>
@@ -97,14 +102,14 @@ const Navbar = () => {
                 )
               } else {
                 return (
-                  <Link
+                  <a
                     key={item.id}
-                    to={item.path}
+                    href={item.path}
                     className={location.pathname === item.path ? 'active' : ''}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={handleHomeClick}
                   >
                     {item.label}
-                  </Link>
+                  </a>
                 )
               }
             })}
@@ -153,14 +158,17 @@ const Navbar = () => {
             )
           } else {
             return (
-              <Link
+              <a
                 key={item.id}
-                to={item.path}
-                onClick={() => setMenuOpen(false)}
+                href={item.path}
+                onClick={(e) => {
+                  handleHomeClick(e)
+                  setMenuOpen(false)
+                }}
                 className={location.pathname === item.path ? 'active' : ''}
               >
                 {item.label}
-              </Link>
+              </a>
             )
           }
         })}

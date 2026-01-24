@@ -225,13 +225,13 @@ const AboutPage = () => {
           <h2>Need to Transport Heavy Industrial Equipment?</h2>
           <p>Get a personalized quote from our heavy transport experts.</p>
           <div className="cta-buttons">
-            <button 
-              onClick={() => handleNavigation('services-section')}
+            <button
+              onClick={() => handleNavigation('services')}
               className="btn-secondary"
             >
               View Our Services
             </button>
-            <button 
+            <button
               onClick={() => handleNavigation('clients-section')}
               className="btn-secondary"
             >
