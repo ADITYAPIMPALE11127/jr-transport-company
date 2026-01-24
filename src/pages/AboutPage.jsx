@@ -186,6 +186,7 @@ const AboutPage = () => {
                         <button 
                           onClick={() => handleNavigation('footer')}
                           className="contact-btn"
+                          style={{backgroundColor:"red", height:'40px',width:'150px',borderRadius:'28px'}}
                         >
                           Get Instant Quote
                         </button>

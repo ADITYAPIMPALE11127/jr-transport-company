@@ -9,7 +9,6 @@ import {
   Paper,
   Box,
   Typography,
-  Grid,
   CircularProgress,
 } from "@mui/material";
 
@@ -172,136 +171,122 @@ const EnquiryForm = () => {
         </Typography>
 
         <Box component="form" onSubmit={handleSubmit} noValidate className="enquiry-form">
-          <Grid container spacing={1}>
-            <Grid item xs={12}>
-              <input
-                type="text"
-                placeholder="Your Name *"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                disabled={loading}
-                required
-                style={{
-                  width: '100%',
-                  padding: '16px',
-                  border: `2px solid ${errors.name ? '#FF3333' : 'rgba(224, 224, 224, 0.8)'}`,
-                  borderRadius: '12px',
-                  fontSize: '16px',
-                  transition: '0.3s',
-                  boxSizing: 'border-box',
-                }}
-              />
-              {errors.name && <div className="error">{errors.name}</div>}
-            </Grid>
+          <input
+            type="text"
+            placeholder="Your Name *"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            disabled={loading}
+            required
+            style={{
+              width: '100%',
+              padding: '16px',
+              border: `2px solid ${errors.name ? '#FF3333' : 'rgba(224, 224, 224, 0.8)'}`,
+              borderRadius: '12px',
+              fontSize: '16px',
+              transition: '0.3s',
+              boxSizing: 'border-box',
+            }}
+          />
+          {errors.name && <div className="error">{errors.name}</div>}
 
-            <Grid item xs={12}>
-              <input
-                type="email"
-                placeholder="Email Address (optional)"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                disabled={loading}
-                style={{
-                  width: '100%',
-                  padding: '16px',
-                  border: `2px solid ${errors.email ? '#FF3333' : 'rgba(224, 224, 224, 0.8)'}`,
-                  borderRadius: '12px',
-                  fontSize: '16px',
-                  transition: '0.3s',
-                  boxSizing: 'border-box',
-                }}
-              />
-              {errors.email && <div className="error">{errors.email}</div>}
-            </Grid>
+          <input
+            type="email"
+            placeholder="Email Address (optional)"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            disabled={loading}
+            style={{
+              width: '100%',
+              padding: '16px',
+              border: `2px solid ${errors.email ? '#FF3333' : 'rgba(224, 224, 224, 0.8)'}`,
+              borderRadius: '12px',
+              fontSize: '16px',
+              transition: '0.3s',
+              boxSizing: 'border-box',
+            }}
+          />
+          {errors.email && <div className="error">{errors.email}</div>}
 
-            <Grid item xs={12}>
-              <input
-                type="tel"
-                placeholder="Phone Number *"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                disabled={loading}
-                required
-                style={{
-                  width: '100%',
-                  padding: '16px',
-                  border: `2px solid ${errors.phone ? '#FF3333' : 'rgba(224, 224, 224, 0.8)'}`,
-                  borderRadius: '12px',
-                  fontSize: '16px',
-                  transition: '0.3s',
-                  boxSizing: 'border-box',
-                }}
-              />
-              {errors.phone && <div className="error">{errors.phone}</div>}
-            </Grid>
+          <input
+            type="tel"
+            placeholder="Phone Number *"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            disabled={loading}
+            required
+            style={{
+              width: '100%',
+              padding: '16px',
+              border: `2px solid ${errors.phone ? '#FF3333' : 'rgba(224, 224, 224, 0.8)'}`,
+              borderRadius: '12px',
+              fontSize: '16px',
+              transition: '0.3s',
+              boxSizing: 'border-box',
+            }}
+          />
+          {errors.phone && <div className="error">{errors.phone}</div>}
 
-            <Grid item xs={12}>
-              <input
-                type="text"
-                placeholder="Company Name (optional)"
-                name="company"
-                value={formData.company}
-                onChange={handleChange}
-                disabled={loading}
-                style={{
-                  width: '100%',
-                  padding: '16px',
-                  border: '2px solid rgba(224, 224, 224, 0.8)',
-                  borderRadius: '12px',
-                  fontSize: '16px',
-                  transition: '0.3s',
-                  boxSizing: 'border-box',
-                }}
-              />
-            </Grid>
+          <input
+            type="text"
+            placeholder="Company Name (optional)"
+            name="company"
+            value={formData.company}
+            onChange={handleChange}
+            disabled={loading}
+            style={{
+              width: '100%',
+              padding: '16px',
+              border: '2px solid rgba(224, 224, 224, 0.8)',
+              borderRadius: '12px',
+              fontSize: '16px',
+              transition: '0.3s',
+              boxSizing: 'border-box',
+            }}
+          />
 
-            <Grid item xs={12}>
-              <textarea
-                placeholder="Message *"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                disabled={loading}
-                required
-                rows={3}
-                style={{
-                  width: '100%',
-                  padding: '16px',
-                  border: `2px solid ${errors.message ? '#FF3333' : 'rgba(224, 224, 224, 0.8)'}`,
-                  borderRadius: '12px',
-                  fontSize: '16px',
-                  transition: '0.3s',
-                  boxSizing: 'border-box',
-                  resize: 'vertical',
-                  minHeight: '80px',
-                }}
-              />
-              {errors.message && <div className="error">{errors.message}</div>}
-            </Grid>
+          <textarea
+            placeholder="Message *"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            disabled={loading}
+            required
+            rows={3}
+            style={{
+              width: '100%',
+              padding: '16px',
+              border: `2px solid ${errors.message ? '#FF3333' : 'rgba(224, 224, 224, 0.8)'}`,
+              borderRadius: '12px',
+              fontSize: '16px',
+              transition: '0.3s',
+              boxSizing: 'border-box',
+              resize: 'vertical',
+              minHeight: '80px',
+            }}
+          />
+          {errors.message && <div className="error">{errors.message}</div>}
 
-            <Grid item xs={12}>
-              <Button
-                type="submit"
-                variant="contained"
-                fullWidth
-                disabled={loading}
-                sx={{
-                  mt: 2,
-                  py: 1.5,
-                  background: 'linear-gradient(135deg, #FF0000, #FF6666)',
-                  '&:hover': {
-                    background: 'linear-gradient(135deg, #CC0000, #FF3333)',
-                  },
-                }}
-                startIcon={loading ? <CircularProgress size={20} color="inherit" /> : null}
-              >
-                {loading ? 'Submitting...' : 'Submit Enquiry'}
-              </Button>
-            </Grid>
-          </Grid>
+          <Button
+            type="submit"
+            variant="contained"
+            disabled={loading}
+            style={{width:'200px',height:'40px',borderRadius:'28px'}}
+            sx={{
+              mt: 2,
+              py: 1,
+              background: 'linear-gradient(135deg, #FF0000, #FF6666)',
+              '&:hover': {
+                background: 'linear-gradient(135deg, #CC0000, #FF3333)',
+              },
+            }}
+            startIcon={loading ? <CircularProgress size={20} color="inherit" /> : null}
+          >
+            {loading ? 'Submitting...' : 'Submit Enquiry'}
+          </Button>
         </Box>
 
         <Box sx={{ mt: 3, pt: 2, borderTop: '1px solid #eee' }}>
@@ -310,7 +295,9 @@ const EnquiryForm = () => {
             <br />
             We'll respond within 24 hours
           </Typography>
+          <div style={{transform:'translateY(-30px)'}}>
           <SocialLinks />
+          </div>
         </Box>
       </Paper>
     </div>
