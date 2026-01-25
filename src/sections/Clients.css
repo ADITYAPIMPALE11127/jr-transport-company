@@ -46,12 +46,12 @@
 
 .marquee-ltr {
   animation-name: marqueeLeftToRight;
-  animation-duration: 5s;
+  animation-duration: 40s;
 }
 
 .marquee-rtl {
   animation-name: marqueeRightToLeft;
-  animation-duration: 5s;
+  animation-duration: 45s;
 }
 
 .client-logo-image {
@@ -103,9 +103,12 @@
     gap: 4rem;
   }
   
-  .marquee-ltr,
+  .marquee-ltr {
+    animation-duration: 35s;
+  }
+
   .marquee-rtl {
-    animation-duration: 20s;
+    animation-duration: 40s;
   }
 }
 
@@ -113,13 +116,16 @@
   .client-logo-image {
     height: 40px;
   }
-  
+
   .marquee {
     gap: 2.5rem;
   }
-  
-  .marquee-ltr,
+
+  .marquee-ltr {
+    animation-duration: 30s;
+  }
+
   .marquee-rtl {
-    animation-duration: 20s;
+    animation-duration: 35s;
   }
 }
