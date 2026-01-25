@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import "./Navbar.css"
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,11 +25,11 @@ const Navbar = () => {
 
   const scrollToSection = (id) => {
     if (location.pathname !== '/') {
-      // If not on home page, navigate home first then scroll
-      window.location.href = `/#${id}`
+      // If not on home page, navigate home with state to scroll to section
+      navigate('/', { state: { scrollTo: id } })
       return
     }
-    
+
     const section = document.getElementById(id)
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' })
