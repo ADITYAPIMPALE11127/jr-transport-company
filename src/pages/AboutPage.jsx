@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -12,9 +12,32 @@ import './AboutPage.css'
 
 const AboutPage = () => {
   const navigate = useNavigate();
+  const [years, setYears] = useState(0);
+  const [capacity, setCapacity] = useState(0);
+  const [clients, setClients] = useState(0);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const animateCount = (setter, target, duration = 2000) => {
+      const increment = target / (duration / 50);
+      let current = 0;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          setter(target);
+          clearInterval(timer);
+        } else {
+          setter(Math.floor(current));
+        }
+      }, 50);
+    };
+
+    animateCount(setYears, 20);
+    animateCount(setCapacity, 130);
+    animateCount(setClients, 150);
   }, []);
 
   const slidesData = [
@@ -201,15 +224,15 @@ const AboutPage = () => {
 
         <div className="quick-stats">
           <div className="stat-card">
-            <h3>20+</h3>
+            <h3>{years}+</h3>
             <p>Years of Legacy</p>
           </div>
           <div className="stat-card">
-            <h3>130T</h3>
+            <h3>{capacity}T</h3>
             <p>Load Capacity</p>
           </div>
           <div className="stat-card">
-            <h3>150+</h3>
+            <h3>{clients}+</h3>
             <p>Client Network</p>
           </div>
           <div className="stat-card">

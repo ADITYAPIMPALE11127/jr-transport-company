@@ -46,12 +46,12 @@
 
 .marquee-ltr {
   animation-name: marqueeLeftToRight;
-  animation-duration: 40s;
+  animation-duration: 5s;
 }
 
 .marquee-rtl {
   animation-name: marqueeRightToLeft;
-  animation-duration: 40s;
+  animation-duration: 5s;
 }
 
 .client-logo-image {
@@ -100,12 +100,12 @@
   }
   
   .marquee {
-    gap: 3rem;
+    gap: 4rem;
   }
   
   .marquee-ltr,
   .marquee-rtl {
-    animation-duration: 30s;
+    animation-duration: 20s;
   }
 }
 
@@ -120,6 +120,6 @@
   
   .marquee-ltr,
   .marquee-rtl {
-    animation-duration: 25s;
+    animation-duration: 20s;
   }
 }
