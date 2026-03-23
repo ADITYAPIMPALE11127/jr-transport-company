@@ -9,32 +9,47 @@ const HeroEnquirySplit = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentBg((prev) => (prev % 5) + 1);
+      setCurrentBg((prev) => (prev % 8) + 1);
     }, 10000);
     return () => clearInterval(interval);
   }, []);
 
-  // Preload images so no flash of blank
+  const imagesConfig = [
+    { num: 1, ext: "jpg" },
+    { num: 2, ext: "jpeg" },
+    { num: 3, ext: "jpg" },
+    { num: 4, ext: "jpg" },
+    { num: 5, ext: "jpg" },
+    { num: 10, ext: "jpeg" },
+    { num: 11, ext: "jpeg" },
+    { num: 12, ext: "jpeg" }
+  ];
+
+  // Preload images so no flash of blank (supports both jpg/jpeg for 8 images: 1-5,10-12)
   useEffect(() => {
-    ["1", "2", "3", "4", "5"].forEach((n) => {
+    imagesConfig.forEach(({ num, ext }) => {
       const img = new Image();
-      img.src = `/assets/hero-bg-${n}.jpg`;
+      img.src = `/assets/hero-bg-${num}.${ext}`;
     });
   }, []);
+
+  const getBgSlides = (currentIndex) => (
+    imagesConfig.map(({ num, ext }, index) => (
+      <div
+        key={num}
+        className={`bg-slide ${currentIndex === index + 1 ? "active" : ""}`}
+        style={{
+          backgroundImage: `url(/assets/hero-bg-${num}.${ext})`,
+        }}
+      />
+    ))
+  );
 
   return (
     <section id="hero-split">
       <div className="bg-slideshow">
-        {[1, 2, 3, 4, 5].map((num) => (
-          <div
-            key={num}
-            className={`bg-slide ${currentBg === num ? "active" : ""}`}
-            style={{
-              backgroundImage: `url(/assets/hero-bg-${num}.jpg)`,
-            }}
-          />
-        ))}
-        
+        {getBgSlides(currentBg)}
+
         {/* LIGHT overlay — this is the fix! */}
         <div className="bg-dark-overlay"></div>
       </div>
@@ -45,14 +60,17 @@ const HeroEnquirySplit = () => {
       </div>
 
       <div className="bg-progress">
-        {[1, 2, 3, 4, 5].map((num) => (
-          <button
-            key={num}
-            className={`progress-dot ${currentBg === num ? "active" : ""}`}
-            onClick={() => setCurrentBg(num)}
-            aria-label={`Go to slide ${num}`}
-          />
-        ))}
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((index) => {
+          const slideNum = imagesConfig[index - 1]?.num || index;
+          return (
+            <button
+              key={index}
+              className={`progress-dot ${currentBg === index ? "active" : ""}`}
+              onClick={() => setCurrentBg(index)}
+              aria-label={`Go to slide ${slideNum}`}
+            />
+          );
+        })}
       </div>
     </section>
   );
