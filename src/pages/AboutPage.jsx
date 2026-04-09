@@ -46,8 +46,8 @@ const AboutPage = () => {
       title: "Built on Two Decades of Trust",
       isFounderSlide: true,
       founders: [
-        { name: "Mr. Rashid Kamate", image: "/assets/co-fon-1.jpeg",designation:"Founder" },
-        { name: "Mr. Kadar Vali Kokane", image: "/assets/co-fon-2.jpeg",designation:'Managing Director' }
+        { name: "Mr. Rashid Kamate", image: "/assets/co-fon-1.jpeg",designation:"Partner" },
+        { name: "Mr. Kadar Vali Kokane", image: "/assets/co-fon-2.jpeg",designation:'Partner' }
       ],
       content: [
         "Founded in 2020 (Registered under MSME – UDYAM-MH-26-0208706",
