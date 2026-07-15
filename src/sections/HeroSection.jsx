@@ -1,5 +1,8 @@
 import React from "react";
-import { CheckCircle, Package, Truck, ShieldCheck } from "lucide-react";
+import { CheckCircle, Package, ShieldCheck, BadgeCheck,Truck } from "lucide-react";
+
+
+
 
 const HeroSection = () => {
   return (
@@ -24,6 +27,14 @@ const HeroSection = () => {
           </div>
           <p style={{ margin: 0, fontSize: '1.1rem', lineHeight: '1.6' }}>
             Grew from 5 clients to 150+ clients since 2020
+          </p>
+        </div>
+        <div style={{ display: 'flex', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
+          <div style={{ marginRight: '12px', color: '#dc2626', flexShrink: 0 }}>
+            <BadgeCheck size={24} />
+          </div>
+          <p style={{ margin: 0, fontSize: '1.1rem', lineHeight: '1.6' }}>
+            ISO 9001:2015 Certified Quality Management
           </p>
         </div>
 

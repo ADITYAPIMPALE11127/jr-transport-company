@@ -121,20 +121,47 @@ const Footer = () => {
           </div>
 
           {/* ---------------- RIGHT SECTION ---------------- */}
-          <div>
+          <div style={{width:500}}>
             <h3 className="footer-legal-title">
               Legal
             </h3>
             <ul className="footer-legal-list">
               <li className="footer-compliance-item">
-                <span className="verified-icon" style={{transform: 'translateY(-18px)'}}>✓</span>
-                Business Compliance Registered<br />
-                MSME: UDYAM-MH-26-0208706
+                <span className="verified-icon" style={{transform: 'translateY(-2px)'}}>✓</span>
+                <a
+                  href="/assets/Udyam Registration Certificate JR TRANSPORT COPMPANY.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="footer-iso-link"
+                  title="MSME Certificate"
+                > Business Compliance Registered
+                MSME: UDYAM-MH-26-0208706</a>
+                
               </li>
               <li className="footer-compliance-item">
                 <span className="verified-icon">✓</span>
+                   <a
+                  href="/assets/GST JR.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="footer-iso-link"
+                  title="GST Certificate"
+                >
                 GST Registered: 27AARFJ7412Q1ZJ
+        </a>
+                
               </li>
+              <li className="footer-compliance-item">  <span className="verified-icon">   ✓ </span>
+                <a
+                  href="/assets/ISO%209001%20OF%20UK%20J%20R%20TRANSPORT%20COMPANY.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="footer-iso-link"
+                  title="ISO 9001:2015 Certificate"
+                >
+                  ISO 9001:2015 Certified
+                </a>
+                </li>
             </ul>
           </div>
         </div>
